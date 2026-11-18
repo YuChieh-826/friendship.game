@@ -1,0 +1,3146 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="sticker">
+  <title>友誼保衛戰：雙血條的人際界線指南</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (Sticker style base + semantic RPG scene tokens) */
+      --background: #fef7ff;
+      --surface-container-low: #ffffff;
+      --surface-container: #f8eef8;
+      --surface-container-high: #f2e8f2;
+      --surface-overlay: rgba(255, 255, 255, 0.94);
+      --surface-glass: rgba(254, 247, 255, 0.9);
+      --surface-dark-hud: rgba(46, 26, 40, 0.88);
+      --surface-dark-dialogue: rgba(34, 20, 32, 0.92);
+      --surface-backdrop: rgba(32, 16, 30, 0.58);
+
+      /* Ink */
+      --on-surface: #2e1a28;
+      --on-surface-variant: #604868;
+      --on-dark-surface: #fff9fe;
+      --on-dark-muted: #ead8ec;
+
+      /* Rules */
+      --outline: #907898;
+      --outline-variant: #dcc8e0;
+
+      /* Accents */
+      --primary: #c2207f;
+      --on-primary: #ffffff;
+      --primary-container: #f080c0;
+      --on-primary-container: #2e1a28;
+      --secondary: #7c52aa;
+      --on-secondary: #ffffff;
+      --secondary-container: #ece2f8;
+      --tertiary: #0096cc;
+      --tertiary-container: #d8f1fb;
+      --error: #c53030;
+      --on-error: #ffffff;
+
+      /* Semantic */
+      --positive: #15803d;
+      --positive-bg: #dcfce7;
+      --warning: #b45309;
+      --warning-bg: #fef3c7;
+      --negative-bg: #fee2e2;
+
+      /* Data series */
+      --data-1: #c2207f;
+      --data-2: #7c52aa;
+      --data-3: #0096cc;
+      --data-4: #d96a00;
+      --data-context: #c8b8d0;
+
+      /* Scene Palette Tokens */
+      --scene-morning-sky: #bfe6ff;
+      --scene-morning-sun: #fff3b0;
+      --scene-morning-wall: #f9eedc;
+      --scene-corridor-wall: #e6eef4;
+      --scene-corridor-floor: #d3c1a5;
+      --scene-gym-roof: #6c879e;
+      --scene-gym-floor: #d99b52;
+      --scene-coop-awning: #c2207f;
+      --scene-coop-cream: #fff4df;
+      --scene-dusk-top: #4b3159;
+      --scene-dusk-mid: #d96a4a;
+      --scene-dusk-low: #f7b267;
+      --scene-night-top: #181326;
+      --scene-night-mid: #2b2345;
+      --scene-night-glow: #584b8a;
+
+      /* Character & UI Accents */
+      --skin-fair: #ffe0cc;
+      --skin-warm: #f6c9ad;
+      --skin-tan: #e4ad89;
+      --hair-dark: #2c2230;
+      --hair-brown: #6b4532;
+      --hair-navy: #273752;
+      --hair-plum: #592e4d;
+      --uniform-white: #fdfbfe;
+      --uniform-navy: #284166;
+      --uniform-teal: #1d6f7a;
+      --uniform-tie: #c2207f;
+      --blush: #f48fb1;
+
+      /* Focus ring */
+      --focus: var(--primary);
+
+      /* Fonts */
+      --font-headline: 'Noto Sans TC', 'DM Sans', sans-serif;
+      --font-body: 'Noto Sans TC', 'DM Sans', sans-serif;
+      --font-label: 'Noto Sans TC', 'DM Sans', sans-serif;
+
+      /* Type scale */
+      --display-size: clamp(1.9rem, 1.3rem + 2.2vw, 2.85rem);
+      --headline-size: clamp(1.35rem, 1.1rem + 0.9vw, 1.85rem);
+      --subhead-size: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+      --body-size: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+      --label-size: 0.78rem;
+
+      /* Shape */
+      --rounded: 1.15rem;
+      --rounded-lg: 1.75rem;
+      --rounded-full: 9999px;
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.25rem;
+      --space-2xl: 3.5rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+
+      /* Style effects */
+      --shadow-pink: 0 6px 20px rgb(194 32 127 / 0.18);
+      --shadow-pink-deep: 0 12px 30px rgb(194 32 127 / 0.30);
+      --shadow-grape: 0 6px 20px rgb(124 82 170 / 0.20);
+      --shadow-sky: 0 6px 20px rgb(0 150 204 / 0.18);
+      --shadow-dark: 0 12px 32px rgb(24 12 24 / 0.38);
+      --pop-scale: scale(1.03);
+      --lift: translateY(-3px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      color: var(--on-surface);
+      background-color: var(--background);
+    }
+    header { position: static !important; }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Fullscreen Immersive Stage Wrapper */
+    .app-shell {
+      position: relative;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Full-bleed Campus Scene Backdrop */
+    .scene-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      transition: opacity var(--dur-long) var(--ease-out);
+    }
+    .scene-backdrop svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .scene-scrim {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(254, 247, 255, 0.12) 0%,
+        rgba(46, 26, 40, 0.08) 55%,
+        rgba(34, 20, 32, 0.34) 100%
+      );
+      transition: opacity var(--dur-long) var(--ease-out);
+    }
+    .scene-scrim.night-mode {
+      background: linear-gradient(
+        180deg,
+        rgba(18, 12, 32, 0.25) 0%,
+        rgba(18, 12, 32, 0.45) 100%
+      );
+    }
+
+    /* Top HUD / Utility Bar (non-sticky per reset rule) */
+    .top-bar {
+      position: relative;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      padding: var(--space-md) var(--space-lg);
+      max-width: 1240px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .hud-brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      background: var(--surface-overlay);
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      box-shadow: var(--shadow-pink);
+      backdrop-filter: blur(8px);
+    }
+    .hud-brand-badge {
+      background: var(--primary);
+      color: var(--on-primary);
+      font-size: var(--label-size);
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--rounded-full);
+    }
+    .hud-brand-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--on-surface);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      border: none;
+      cursor: pointer;
+      min-height: 44px;
+      padding: 0.55rem 1.25rem;
+      border-radius: var(--rounded-full);
+      font-weight: 700;
+      font-size: 0.95rem;
+      line-height: 1.2;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  box-shadow var(--dur-short) var(--ease-out),
+                  background-color var(--dur-micro) var(--ease-out);
+      text-decoration: none;
+    }
+    .btn:hover:not(:disabled) {
+      transform: var(--pop-scale);
+    }
+    .btn:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      box-shadow: var(--shadow-pink);
+    }
+    .btn-primary:hover:not(:disabled) {
+      box-shadow: var(--shadow-pink-deep);
+    }
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--on-secondary);
+      box-shadow: var(--shadow-grape);
+    }
+    .btn-surface {
+      background: var(--surface-overlay);
+      color: var(--on-surface);
+      box-shadow: var(--shadow-sky);
+    }
+    .btn-ghost-dark {
+      background: var(--surface-dark-hud);
+      color: var(--on-dark-surface);
+      box-shadow: var(--shadow-grape);
+    }
+    .btn-danger {
+      background: var(--error);
+      color: var(--on-error);
+      box-shadow: var(--shadow-pink);
+    }
+
+    /* Main Content Stage */
+    .stage-container {
+      position: relative;
+      z-index: 10;
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg) var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Smooth View Transitions */
+    .view-panel {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity var(--dur-long) var(--ease-out),
+                  transform var(--dur-long) var(--ease-out);
+    }
+    .view-panel.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Card Styles */
+    .sticker-card {
+      background: var(--surface-overlay);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--shadow-pink);
+      padding: var(--space-xl);
+      backdrop-filter: blur(10px);
+    }
+    .sticker-card.grape-shadow { box-shadow: var(--shadow-grape); }
+    .sticker-card.sky-shadow { box-shadow: var(--shadow-sky); }
+
+    /* Login & Character Select Layout */
+    .login-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr);
+      gap: var(--space-xl);
+      align-items: start;
+    }
+
+    .display-title {
+      font-family: var(--font-headline);
+      font-weight: 900;
+      font-size: var(--display-size);
+      line-height: 1.15;
+      margin: 0 0 var(--space-sm);
+      color: var(--on-surface);
+    }
+    .display-title em {
+      font-style: normal;
+      color: var(--primary);
+    }
+
+    .subtitle-lead {
+      font-size: var(--subhead-size);
+      color: var(--on-surface-variant);
+      margin: 0 0 var(--space-lg);
+      max-width: 58ch;
+    }
+
+    .rule-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--surface-container);
+      color: var(--on-surface);
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--rounded-full);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .pill-tag.pink {
+      background: var(--primary-container);
+      color: var(--on-primary-container);
+    }
+    .pill-tag.grape {
+      background: var(--secondary-container);
+      color: var(--secondary);
+    }
+    .pill-tag.sky {
+      background: var(--tertiary-container);
+      color: var(--on-surface);
+    }
+
+    /* Form Fields with Always-Visible Labels */
+    .form-row-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .field-label {
+      font-size: var(--label-size);
+      font-weight: 700;
+      color: var(--on-surface-variant);
+      padding-left: var(--space-sm);
+    }
+    .pill-input {
+      width: 100%;
+      min-height: 46px;
+      padding: 0.6rem 1.1rem;
+      border-radius: var(--rounded-full);
+      border: 2px solid var(--outline);
+      background: var(--surface-container);
+      color: var(--on-surface);
+      font-weight: 600;
+      transition: border-color var(--dur-micro) var(--ease-out),
+                  background-color var(--dur-micro) var(--ease-out);
+    }
+    .pill-input:focus {
+      background: var(--surface-container-low);
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(194, 32, 127, 0.2);
+    }
+
+    .inline-alert {
+      display: none;
+      margin-bottom: var(--space-md);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      background: var(--negative-bg);
+      color: var(--error);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+    .inline-alert.show { display: block; }
+
+    /* Hero Character Grid */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(175px, 100%), 1fr));
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    .hero-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: var(--space-md);
+      border-radius: var(--rounded);
+      background: var(--surface-container-low);
+      border: 2px solid transparent;
+      box-shadow: var(--shadow-sky);
+      cursor: pointer;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  box-shadow var(--dur-short) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out);
+    }
+    .hero-card:hover {
+      transform: var(--lift);
+      box-shadow: var(--shadow-grape);
+    }
+    .hero-card.selected {
+      border-color: var(--primary);
+      background: var(--surface-container);
+      box-shadow: var(--shadow-pink-deep);
+    }
+    .hero-avatar-box {
+      width: 96px;
+      height: 108px;
+      margin-bottom: var(--space-xs);
+    }
+    .hero-name {
+      font-weight: 800;
+      font-size: 1.02rem;
+      color: var(--on-surface);
+    }
+    .hero-trait {
+      display: inline-block;
+      margin-top: 0.25rem;
+      padding: 0.15rem 0.65rem;
+      border-radius: var(--rounded-full);
+      background: var(--secondary-container);
+      color: var(--secondary);
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .hero-desc {
+      margin-top: var(--space-xs);
+      font-size: 0.82rem;
+      color: var(--on-surface-variant);
+      line-height: 1.45;
+    }
+
+    /* Gameplay Stage (Immersive RPG Screen without clunky outer frame) */
+    .rpg-stage {
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 110px);
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+
+    /* Dual HP Bars HUD */
+    .rpg-hud {
+      display: grid;
+      grid-template-columns: minmax(0, auto) minmax(0, 1fr) minmax(0, auto);
+      align-items: center;
+      gap: var(--space-md);
+      background: var(--surface-overlay);
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--shadow-pink);
+      backdrop-filter: blur(10px);
+    }
+    .stage-indicator {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .stage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--secondary);
+      color: var(--on-secondary);
+      font-size: var(--label-size);
+      font-weight: 700;
+      padding: 0.2rem 0.75rem;
+      border-radius: var(--rounded-full);
+      width: fit-content;
+    }
+    .stage-title {
+      font-weight: 900;
+      font-size: 1.12rem;
+      color: var(--on-surface);
+    }
+    .stage-loc {
+      font-size: 0.84rem;
+      color: var(--on-surface-variant);
+      font-weight: 600;
+    }
+
+    .bars-cluster {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-lg);
+    }
+    .hp-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .hp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-weight: 800;
+      font-size: 0.94rem;
+    }
+    .hp-value {
+      font-variant-numeric: tabular-nums;
+      font-size: 1.05rem;
+      font-weight: 900;
+    }
+    .hp-delta {
+      display: inline-block;
+      margin-left: 0.35rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 0.1rem 0.45rem;
+      border-radius: var(--rounded-full);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity var(--dur-short) var(--ease-out),
+                  transform var(--dur-short) var(--ease-bounce);
+    }
+    .hp-delta.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hp-delta.up {
+      background: var(--positive-bg);
+      color: var(--positive);
+    }
+    .hp-delta.down {
+      background: var(--negative-bg);
+      color: var(--error);
+    }
+    .hp-delta.flat {
+      background: var(--surface-container-high);
+      color: var(--on-surface-variant);
+    }
+
+    .hp-track {
+      height: 16px;
+      background: var(--surface-container-high);
+      border-radius: var(--rounded-full);
+      overflow: hidden;
+      padding: 2px;
+    }
+    .hp-fill {
+      height: 100%;
+      border-radius: var(--rounded-full);
+      transition: width var(--dur-long) var(--ease-bounce);
+    }
+    .hp-fill.friendship {
+      background: linear-gradient(90deg, var(--primary-container), var(--primary));
+    }
+    .hp-fill.boundary {
+      background: linear-gradient(90deg, var(--tertiary), var(--secondary));
+    }
+
+    .hud-player-chip {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      background: var(--surface-container);
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--rounded-full);
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    /* Character Visual Stage (Immersive Floating Portraits) */
+    .portraits-arena {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      min-height: 280px;
+      padding: 0 var(--space-xl);
+      gap: var(--space-lg);
+    }
+    .actor-slot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform var(--dur-long) var(--ease-out),
+                  opacity var(--dur-short) var(--ease-out),
+                  filter var(--dur-short) var(--ease-out);
+    }
+    .actor-slot.player-slot {
+      width: clamp(160px, 23vw, 240px);
+    }
+    .actor-slot.npc-slot {
+      width: clamp(185px, 26vw, 275px);
+    }
+    .actor-slot.dimmed {
+      opacity: 0.72;
+      filter: saturate(0.82);
+      transform: scale(0.95);
+    }
+    .actor-slot.speaking {
+      opacity: 1;
+      filter: none;
+      transform: translateY(-6px) scale(1.02);
+    }
+    .actor-svg-wrap {
+      width: 100%;
+      filter: drop-shadow(0 12px 24px rgba(34, 18, 36, 0.28));
+    }
+    .actor-nameplate {
+      margin-top: -10px;
+      background: var(--surface-dark-hud);
+      color: var(--on-dark-surface);
+      padding: 0.25rem 0.95rem;
+      border-radius: var(--rounded-full);
+      font-size: 0.85rem;
+      font-weight: 800;
+      box-shadow: var(--shadow-grape);
+      z-index: 2;
+    }
+
+    /* Dialogue & Options Dock */
+    .dialogue-dock {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      transition: opacity var(--dur-short) var(--ease-out);
+    }
+
+    .dialogue-box {
+      position: relative;
+      background: var(--surface-dark-dialogue);
+      color: var(--on-dark-surface);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg) var(--space-xl);
+      box-shadow: var(--shadow-dark);
+      backdrop-filter: blur(12px);
+    }
+    .dialogue-speaker-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xs);
+      flex-wrap: wrap;
+    }
+    .speaker-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--primary);
+      color: var(--on-primary);
+      padding: 0.25rem 0.9rem;
+      border-radius: var(--rounded-full);
+      font-weight: 800;
+      font-size: 0.92rem;
+    }
+    .speaker-pill.mood {
+      background: var(--secondary);
+      font-size: 0.8rem;
+    }
+    .dialogue-text {
+      font-size: clamp(1.05rem, 0.98rem + 0.35vw, 1.22rem);
+      line-height: 1.68;
+      min-height: 3.4em;
+      color: var(--on-dark-surface);
+      cursor: pointer;
+    }
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--primary-container);
+      vertical-align: text-bottom;
+      margin-left: 3px;
+      animation: blinkCursor 0.8s steps(2) infinite;
+    }
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .dialogue-hint-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: var(--space-sm);
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .skip-hint {
+      font-size: 0.82rem;
+      color: var(--on-dark-muted);
+    }
+
+    /* 4-Option Choices Grid */
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+    .option-btn {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      text-align: left;
+      width: 100%;
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--rounded);
+      border: 2px solid transparent;
+      background: var(--surface-overlay);
+      color: var(--on-surface);
+      box-shadow: var(--shadow-pink);
+      cursor: pointer;
+      transition: transform var(--dur-short) var(--ease-bounce),
+                  box-shadow var(--dur-short) var(--ease-out),
+                  border-color var(--dur-micro) var(--ease-out),
+                  background-color var(--dur-micro) var(--ease-out);
+      min-height: 76px;
+    }
+    .option-btn:hover:not(:disabled) {
+      transform: var(--lift);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-pink-deep);
+      background: var(--surface-container-low);
+    }
+    .option-btn.chosen {
+      border-color: var(--primary);
+      background: var(--surface-container);
+      box-shadow: var(--shadow-pink-deep);
+    }
+    .option-btn:disabled {
+      cursor: default;
+      opacity: 0.72;
+    }
+    .option-btn.chosen:disabled {
+      opacity: 1;
+    }
+    .option-key {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: var(--rounded-full);
+      background: var(--secondary);
+      color: var(--on-secondary);
+      font-weight: 800;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+    .option-btn.chosen .option-key {
+      background: var(--primary);
+    }
+    .option-copy {
+      font-size: 0.96rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    /* Post-answer Action Row & Floating Reminder Reopen Button */
+    .post-answer-bar {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      background: var(--surface-overlay);
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--rounded-full);
+      box-shadow: var(--shadow-grape);
+    }
+    .post-answer-bar.show {
+      display: flex;
+    }
+
+    /* Counselor Reminder Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background: var(--surface-backdrop);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg);
+      backdrop-filter: blur(6px);
+    }
+    .modal-backdrop.open {
+      display: flex;
+    }
+    .modal-card {
+      position: relative;
+      width: 100%;
+      max-width: 620px;
+      max-height: 88vh;
+      overflow-y: auto;
+      background: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-pink-deep);
+      animation: popIn var(--dur-short) var(--ease-bounce);
+    }
+    .modal-card.wide {
+      max-width: 1040px;
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.94) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close-x {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      width: 44px;
+      height: 44px;
+      border-radius: var(--rounded-full);
+      border: none;
+      background: var(--surface-container);
+      color: var(--on-surface);
+      font-size: 1.2rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--dur-micro) var(--ease-bounce),
+                  background-color var(--dur-micro) var(--ease-out);
+    }
+    .modal-close-x:hover {
+      background: var(--primary-container);
+      transform: scale(1.06);
+    }
+
+    .reminder-title {
+      font-size: var(--headline-size);
+      font-weight: 900;
+      color: var(--primary);
+      margin: 0 0 var(--space-sm);
+      padding-right: 3rem;
+    }
+    .delta-badges-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .delta-badge {
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--rounded-full);
+      font-weight: 800;
+      font-size: 0.9rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .delta-badge.pos { background: var(--positive-bg); color: var(--positive); }
+    .delta-badge.neg { background: var(--negative-bg); color: var(--error); }
+    .delta-badge.neu { background: var(--surface-container); color: var(--on-surface-variant); }
+
+    .counselor-box {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      margin-bottom: var(--space-md);
+    }
+    .counselor-box h4 {
+      margin: 0 0 var(--space-xs);
+      font-size: 0.95rem;
+      color: var(--secondary);
+    }
+    .counselor-box p {
+      margin: 0;
+      line-height: 1.65;
+    }
+    .reflection-box {
+      background: var(--tertiary-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md) var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+    .reflection-box h4 {
+      margin: 0 0 var(--space-xs);
+      font-size: 0.95rem;
+      color: var(--on-surface);
+    }
+    .reflection-box p {
+      margin: 0;
+      font-weight: 600;
+      color: var(--on-surface);
+    }
+
+    /* Final Summary & 10-Stage Journey Review */
+    .report-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: var(--space-xl);
+      align-items: center;
+      margin-bottom: var(--space-xl);
+    }
+    .archetype-badge {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--on-primary);
+      padding: 0.3rem 1rem;
+      border-radius: var(--rounded-full);
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-bottom: var(--space-sm);
+    }
+    .score-tiles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+    .score-tile {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-sky);
+      text-align: center;
+    }
+    .score-tile:first-child { box-shadow: var(--shadow-pink); }
+    .score-tile-label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--on-surface-variant);
+    }
+    .score-tile-num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      color: var(--primary);
+      line-height: 1.15;
+      margin: var(--space-xs) 0;
+    }
+    .score-tile:last-child .score-tile-num {
+      color: var(--secondary);
+    }
+
+    .journey-section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+    .journey-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .journey-item {
+      background: var(--surface-container-low);
+      border-radius: var(--rounded);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-pink);
+    }
+    .journey-item:nth-child(3n+2) { box-shadow: var(--shadow-sky); }
+    .journey-item:nth-child(3n+3) { box-shadow: var(--shadow-grape); }
+
+    .journey-item-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+    }
+    .journey-stage-title {
+      font-weight: 900;
+      font-size: 1.08rem;
+      color: var(--on-surface);
+    }
+    .journey-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+      margin-bottom: var(--space-md);
+    }
+    .flow-box {
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+    }
+    .flow-box.mine {
+      background: var(--secondary-container);
+    }
+    .flow-box-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--on-surface-variant);
+      margin-bottom: 0.25rem;
+    }
+    .flow-box-text {
+      font-size: 0.94rem;
+      font-weight: 600;
+      line-height: 1.55;
+    }
+    .journey-counselor {
+      background: var(--tertiary-container);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    /* Teacher Dashboard Table */
+    .teacher-table-wrap {
+      overflow-x: auto;
+      margin-top: var(--space-md);
+      border-radius: var(--rounded);
+      background: var(--surface-container-low);
+    }
+    .teacher-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .teacher-table th {
+      background: var(--surface-container);
+      color: var(--on-surface-variant);
+      font-weight: 800;
+      text-align: left;
+      padding: 0.75rem 0.9rem;
+      white-space: nowrap;
+    }
+    .teacher-table td {
+      padding: 0.7rem 0.9rem;
+      border-top: 1px solid var(--outline-variant);
+      vertical-align: top;
+    }
+    .teacher-table tr:hover td {
+      background: var(--surface-container);
+    }
+    .teacher-detail-card {
+      margin-top: var(--space-lg);
+      background: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-lg);
+    }
+
+    @media (max-width: 900px) {
+      .login-grid,
+      .report-hero,
+      .rpg-hud,
+      .bars-cluster,
+      .options-grid,
+      .journey-flow-grid {
+        grid-template-columns: 1fr;
+      }
+      .portraits-arena {
+        min-height: 200px;
+        padding: 0 var(--space-sm);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .form-row-3 { grid-template-columns: 1fr; }
+      .stage-container { padding: 0 var(--space-sm) var(--space-lg); }
+      .sticker-card { padding: var(--space-lg); }
+      .dialogue-box { padding: var(--space-md); }
+      .portraits-arena { min-height: 175px; }
+      .actor-slot.player-slot { width: 135px; }
+      .actor-slot.npc-slot { width: 150px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Immersive Full-Screen Campus Scene SVG -->
+    <div id="scene-backdrop" class="scene-backdrop" aria-hidden="true"></div>
+    <div id="scene-scrim" class="scene-scrim" aria-hidden="true"></div>
+
+    <!-- Top Utility Bar -->
+    <header class="top-bar">
+      <div class="hud-brand">
+        <span class="hud-brand-badge">人際界線 RPG</span>
+        <span class="hud-brand-title">友誼保衛戰：雙血條的考驗</span>
+      </div>
+      <div class="top-actions">
+        <button type="button" id="btn-back-home" class="btn btn-surface" onclick="requestReturnHome()" style="display:none;">
+          🔄 重新開始
+        </button>
+        <button type="button" id="btn-teacher-open" class="btn btn-ghost-dark" onclick="openTeacherLoginModal()">
+          🔐 教師後台
+        </button>
+      </div>
+    </header>
+
+    <main class="stage-container">
+      <!-- VIEW 1: Login & Character Select -->
+      <section id="view-login" class="view-panel active">
+        <div class="login-grid">
+          <div class="sticker-card">
+            <h1 class="display-title">友誼保衛戰：<br><em>雙血條</em>的人際界線指南</h1>
+            <p class="subtitle-lead">
+              當踩到界線的人是你最要好的朋友，你該如何既保護自己、又不傷感情？化身為金華國中八年級勇者，挑戰 10 關真實校園情境！
+            </p>
+            <div class="rule-pills">
+              <span class="pill-tag pink">❤️ 友誼值 70 起跳</span>
+              <span class="pill-tag grape">🛡️ 界線值 70 起跳</span>
+              <span class="pill-tag sky">🥪 覺察三明治溝通力</span>
+            </div>
+            <div class="counselor-box">
+              <h4>冒險規則說明</h4>
+              <p>
+                每一關的選擇都會影響你的雙血條（單次變動在 ±15 分內）。只要你能在關係中穩住底線、不盲目委屈自己，就能守住甚至提升 🛡️ 界線值！結束後可瀏覽完整的 10 關歷程回顧來協助填寫學習單。
+              </p>
+            </div>
+            <div class="form-row-3">
+              <div class="field-group">
+                <label class="field-label" for="input-class">班級</label>
+                <input id="input-class" class="pill-input" type="text" placeholder="例：801" maxlength="10">
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="input-seat">座號</label>
+                <input id="input-seat" class="pill-input" type="text" placeholder="例：12" maxlength="5">
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="input-name">姓名</label>
+                <input id="input-name" class="pill-input" type="text" placeholder="請輸入姓名" maxlength="16">
+              </div>
+            </div>
+            <div id="login-alert" class="inline-alert" role="alert"></div>
+            <button type="button" class="btn btn-primary" style="width:100%; font-size:1.08rem; min-height:52px;" onclick="startAdventure()">
+              ⚔️ 進入校園冒險（第 1 關）
+            </button>
+          </div>
+
+          <div class="sticker-card grape-shadow">
+            <h2 style="margin:0 0 var(--space-xs); font-weight:900; font-size:var(--headline-size);">選擇你的勇者主角</h2>
+            <p style="margin:0 0 var(--space-md); color:var(--on-surface-variant); font-size:0.94rem;">
+              挑一位最貼近你個性、或想體驗的角色進入今日校園挑戰：
+            </p>
+            <div id="hero-select-grid" class="hero-grid"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 2: 10-Stage Interactive RPG -->
+      <section id="view-game" class="view-panel">
+        <div class="rpg-stage">
+          <!-- Dual HP HUD -->
+          <div class="rpg-hud">
+            <div class="stage-indicator">
+              <span id="hud-stage-badge" class="stage-badge">第 1 / 10 關</span>
+              <span id="hud-stage-title" class="stage-title">早自習作業催繳</span>
+              <span id="hud-stage-loc" class="stage-loc">📍 晨光教室</span>
+            </div>
+
+            <div class="bars-cluster">
+              <div class="hp-block">
+                <div class="hp-header">
+                  <span>❤️ 友誼值</span>
+                  <span>
+                    <span id="hud-friend-val" class="hp-value">70</span> / 100
+                    <span id="hud-friend-delta" class="hp-delta"></span>
+                  </span>
+                </div>
+                <div class="hp-track">
+                  <div id="hud-friend-bar" class="hp-fill friendship" style="width:70%;"></div>
+                </div>
+              </div>
+
+              <div class="hp-block">
+                <div class="hp-header">
+                  <span>🛡️ 界線值</span>
+                  <span>
+                    <span id="hud-boundary-val" class="hp-value">70</span> / 100
+                    <span id="hud-boundary-delta" class="hp-delta"></span>
+                  </span>
+                </div>
+                <div class="hp-track">
+                  <div id="hud-boundary-bar" class="hp-fill boundary" style="width:70%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="hud-player-chip" class="hud-player-chip"></div>
+          </div>
+
+          <!-- Character Portraits Arena -->
+          <div class="portraits-arena">
+            <div id="player-slot" class="actor-slot player-slot dimmed">
+              <div id="player-portrait" class="actor-svg-wrap"></div>
+              <div id="player-nameplate" class="actor-nameplate">主角</div>
+            </div>
+            <div id="npc-slot" class="actor-slot npc-slot speaking">
+              <div id="npc-portrait" class="actor-svg-wrap"></div>
+              <div id="npc-nameplate" class="actor-nameplate">阿哲</div>
+            </div>
+          </div>
+
+          <!-- Dialogue & Choices Dock -->
+          <div class="dialogue-dock">
+            <div class="dialogue-box">
+              <div class="dialogue-speaker-row">
+                <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                  <span id="dialogue-speaker" class="speaker-pill">阿哲</span>
+                  <span id="dialogue-mood" class="speaker-pill mood">著急求助</span>
+                </div>
+                <span id="dialogue-step-hint" class="skip-hint">點擊對話框可立即顯示完整對白</span>
+              </div>
+              <div id="dialogue-text" class="dialogue-text" onclick="skipTypewriter()"></div>
+            </div>
+
+            <div id="options-grid" class="options-grid"></div>
+
+            <!-- Appears after selecting an option (persists even if reminder modal is closed) -->
+            <div id="post-answer-bar" class="post-answer-bar">
+              <button type="button" id="btn-reopen-reminder" class="btn btn-secondary" onclick="openReminderModal()">
+                📜 查看小提醒 / AI 建議
+              </button>
+              <button type="button" id="btn-next-stage" class="btn btn-primary" onclick="goToNextStage()">
+                前往下一關 ➡️
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIEW 3: Final Report & Complete 10-Stage Journey Review -->
+      <section id="view-report" class="view-panel">
+        <div class="sticker-card">
+          <div class="report-hero">
+            <div>
+              <span id="report-archetype-badge" class="archetype-badge">人際型態診斷</span>
+              <h2 id="report-archetype-title" class="display-title" style="font-size:clamp(1.6rem, 1.2rem + 1.5vw, 2.3rem);">溫和堅定型勇者</h2>
+              <p id="report-student-meta" style="font-weight:700; color:var(--secondary); margin:0 0 var(--space-sm);"></p>
+              <p id="report-archetype-desc" style="margin:0; line-height:1.65; color:var(--on-surface-variant);"></p>
+            </div>
+            <div class="score-tiles">
+              <div class="score-tile">
+                <div class="score-tile-label">❤️ 最終友誼值</div>
+                <div id="report-final-friend" class="score-tile-num">70</div>
+                <div id="report-friend-note" style="font-size:0.84rem; color:var(--on-surface-variant);">初始 70 分</div>
+              </div>
+              <div class="score-tile">
+                <div class="score-tile-label">🛡️ 最終界線值</div>
+                <div id="report-final-boundary" class="score-tile-num">70</div>
+                <div id="report-boundary-note" style="font-size:0.84rem; color:var(--on-surface-variant);">初始 70 分</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="counselor-box" style="margin-bottom:var(--space-xl);">
+            <h4>💡 給你的總結小語：真正的友誼，經得起界線的考驗</h4>
+            <p>
+              委屈換來的不是真友誼，只是表面和平。當你用「同理肯定 ＋ 溫和明確的界線 ＋ 誠意替代方案」與朋友對話時，真正珍惜你的朋友會願意理解你的難處；如果對方只要你說不就立刻威脅絕交，那也是幫你看見這段關係需要重新調整的重要訊號。
+            </p>
+          </div>
+
+          <div class="journey-section-head">
+            <div>
+              <h3 style="margin:0; font-weight:900; font-size:var(--headline-size);">📜 10 關冒險歷程完整回顧（學習單對照區）</h3>
+              <p style="margin:0.2rem 0 0; color:var(--on-surface-variant); font-size:0.92rem;">
+                完整對照「對方說了什麼 ➔ 我如何回應 ➔ 當下數值變化 ➔ 輔導老師點評與反思」
+              </p>
+            </div>
+            <div style="display:flex; gap:var(--space-sm); flex-wrap:wrap;">
+              <button type="button" class="btn btn-secondary" onclick="exportStudentCsv()">⬇️ 下載我的歷程 CSV</button>
+              <button type="button" class="btn btn-primary" onclick="restartFromReport()">🔄 重新挑戰冒險</button>
+            </div>
+          </div>
+
+          <div id="journey-review-list" class="journey-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL 1: Stage Counselor Reminder -->
+  <div id="modal-reminder" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="reminder-modal-title">
+    <div class="modal-card">
+      <button type="button" class="modal-close-x" aria-label="暫時關閉小提醒，查看角色立繪與對白" onclick="closeReminderModal()">✕</button>
+      <h3 id="reminder-modal-title" class="reminder-title">【小提醒】</h3>
+      <div id="reminder-deltas" class="delta-badges-row"></div>
+      <div class="counselor-box">
+        <h4>🧑‍🏫 輔導老師的情境點評</h4>
+        <p id="reminder-commentary"></p>
+      </div>
+      <div class="reflection-box">
+        <h4>💭 給你的反思提問</h4>
+        <p id="reminder-question"></p>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:var(--space-sm); flex-wrap:wrap;">
+        <button type="button" class="btn btn-surface" onclick="closeReminderModal()">
+          👀 先看角色反應與對白
+        </button>
+        <button type="button" id="modal-next-btn" class="btn btn-primary" onclick="goToNextStage()">
+          繼續下一關 ➡️
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Teacher Password & Dashboard -->
+  <div id="modal-teacher" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="teacher-modal-title">
+    <div class="modal-card wide">
+      <button type="button" class="modal-close-x" aria-label="關閉教師後台" onclick="closeTeacherModal()">✕</button>
+      <h3 id="teacher-modal-title" class="reminder-title" style="color:var(--secondary);">🔐 教師後台管理中心</h3>
+
+      <!-- Password Gate -->
+      <div id="teacher-gate">
+        <p style="color:var(--on-surface-variant); margin-top:0;">
+          請輸入教師專用密碼，以檢視全班同學的 10 關作答紀錄、NPC 原對白與學生回應對照，並匯出 CSV 成績單。
+        </p>
+        <div style="display:flex; align-items:end; gap:var(--space-md); flex-wrap:wrap; max-width:460px;">
+          <div class="field-group" style="flex:1; min-width:200px;">
+            <label class="field-label" for="input-teacher-pwd">教師密碼</label>
+            <input id="input-teacher-pwd" class="pill-input" type="password" placeholder="請輸入密碼" onkeydown="if(event.key==='Enter'){verifyTeacherPassword();}">
+          </div>
+          <button type="button" class="btn btn-secondary" onclick="verifyTeacherPassword()">解鎖後台</button>
+        </div>
+        <div id="teacher-pwd-alert" class="inline-alert" style="margin-top:var(--space-md);" role="alert"></div>
+      </div>
+
+      <!-- Unlocked Teacher Dashboard -->
+      <div id="teacher-panel" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:var(--space-md); margin-bottom:var(--space-md);">
+          <div id="teacher-summary-stats" style="font-weight:700; color:var(--on-surface);"></div>
+          <div style="display:flex; gap:var(--space-sm); flex-wrap:wrap;">
+            <button type="button" class="btn btn-primary" onclick="exportAllRecordsCsv()">⬇️ 匯出全班完整紀錄 (CSV)</button>
+            <button type="button" id="btn-clear-records" class="btn btn-danger" onclick="clearAllTeacherRecords(this)">🗑️ 清除所有紀錄</button>
+          </div>
+        </div>
+        <div id="teacher-records-container"></div>
+        <div id="teacher-student-detail" class="teacher-detail-card" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    /* =========================================================================
+       1. DATA: 5 HEROES, 6 CAMPUS SCENES, 10 COHERENT STAGES (4 OPTIONS EACH)
+       ========================================================================= */
+    const HEROES = [
+      {
+        id: `xiaoqing`,
+        name: `林小晴`,
+        trait: `隨和型`,
+        desc: `人緣很好、很怕大家不開心，常常在「幫忙」與「勉強自己」之間拉扯。`,
+        hairColor: `#3d2830`,
+        hairStyle: `bob`,
+        outfitColor: `#284166`,
+        tieColor: `#c2207f`,
+        skin: `#ffe0cc`,
+        accent: `#f080c0`
+      },
+      {
+        id: `yuchen`,
+        name: `張宇辰`,
+        trait: `責任型`,
+        desc: `做事認真守規矩，總覺得團隊的事沒做好會是自己的責任，容易默默扛下全部。`,
+        hairColor: `#273752`,
+        hairStyle: `short`,
+        outfitColor: `#1d6f7a`,
+        tieColor: `#0096cc`,
+        skin: `#f6c9ad`,
+        accent: `#7c52aa`
+      },
+      {
+        id: `zihan`,
+        name: `陳子涵`,
+        trait: `敏感型`,
+        desc: `非常在意朋友語氣和群組氣氛，只要對方稍微冷淡就會擔心是不是自己做錯。`,
+        hairColor: `#6b4532`,
+        hairStyle: `ponytail`,
+        outfitColor: `#4b3556`,
+        tieColor: `#c2207f`,
+        skin: `#ffe0cc`,
+        accent: `#7c52aa`
+      },
+      {
+        id: `dazhi`,
+        name: `王大智`,
+        trait: `直率型`,
+        desc: `講話直接講義氣，不想惹麻煩時會硬吞，被逼急了又容易忍不住直接開嗆。`,
+        hairColor: `#2c2230`,
+        hairStyle: `spiky`,
+        outfitColor: `#284166`,
+        tieColor: `#d96a00`,
+        skin: `#e4ad89`,
+        accent: `#d96a00`
+      },
+      {
+        id: `yunfei`,
+        name: `許芸菲`,
+        trait: `內向型`,
+        desc: `習慣安靜觀察，面對突如其來的要求常一時不知怎麼拒絕，事後又很懊惱。`,
+        hairColor: `#592e4d`,
+        hairStyle: `long`,
+        outfitColor: `#2b4c59`,
+        tieColor: `#7c52aa`,
+        skin: `#ffe0cc`,
+        accent: `#0096cc`
+      }
+    ];
+
+    const NPCS = {
+      azhe: { name: `阿哲`, role: `麻吉同學`, hairColor: `#2c2230`, hairStyle: `spiky`, outfitColor: `#2f4562`, tieColor: `#d96a00`, skin: `#f6c9ad` },
+      xinyi: { name: `欣儀`, role: `同組好友`, hairColor: `#6b4532`, hairStyle: `ponytail`, outfitColor: `#5b375e`, tieColor: `#c2207f`, skin: `#ffe0cc` },
+      ahao: { name: `阿豪`, role: `籃球社死黨`, hairColor: `#273752`, hairStyle: `short`, outfitColor: `#1f5c63`, tieColor: `#0096cc`, skin: `#e4ad89` },
+      leader: { name: `班長`, role: `801 班長`, hairColor: `#3d2830`, hairStyle: `bob`, outfitColor: `#284166`, tieColor: `#7c52aa`, skin: `#ffe0cc` }
+    };
+
+    const STAGES = [
+      {
+        id: 1,
+        title: `早自習作業催繳`,
+        scene: `morning_classroom`,
+        sceneName: `晨光教室`,
+        npcId: `azhe`,
+        npcMood: `著急求助`,
+        npcDialogue: `「救命啊！我昨天打遊戲打太晚，數學完全沒寫！小老師馬上要收了，借我看幾題啦，我們不是好兄弟嗎？」`,
+        options: [
+          {
+            key: `A`,
+            text: `「你先別緊張，這題我教你大概怎麼算，不過整本借你抄的話被抓到我們都會被記警告，真的沒辦法。」`,
+            df: 10,
+            db: 10,
+            playerMood: `smile`,
+            npcReplyMood: `thoughtful`,
+            npcReply: `「吼……好吧，被老師抓到確實會很慘。那你快點教我前面兩題算式，剩下的我下課再去問老師！」`,
+            commentary: `你用穩定的語氣先接住阿哲的焦急，接著清楚說出不能借抄的真實原因與後果，最後提供實際能幫上忙的方式。既沒有因為「好兄弟」這句話而妥協違規，也沒有讓對話變成指責，雙血條同時守住！`,
+            question: `當朋友用「我們不是好朋友嗎？」當作請求理由時，你心裡會有哪些壓力？怎麼區分「真幫忙」和「幫他逃避責任」？`
+          },
+          {
+            key: `B`,
+            text: `「唉，拿你沒辦法，只借這一次喔！你寫快一點不要被小老師看到，記得改幾個數字。」`,
+            df: 5,
+            db: -15,
+            playerMood: `worried`,
+            npcReplyMood: `happy`,
+            npcReply: `「讚啦！我就知道你最挺我了，那我趕快抄一抄，下次請你喝飲料！」`,
+            commentary: `表面上阿哲很開心、友誼值微幅上升，但你必須提心吊膽怕被老師發現，內心其實充滿不安與委屈。長期用「幫對方代打或承擔風險」換來的關係，會讓對方越來越習慣踩過你的原則。`,
+            question: `你說「只借這一次」的時候，對方真的只會借這一次嗎？如果下次他再開口，你會更容易還是更難拒絕？`
+          },
+          {
+            key: `C`,
+            text: `「你自己昨天愛打遊戲不寫作業，現在才來找我？我又不是你的作業機，別來煩我啦！」`,
+            df: -15,
+            db: 5,
+            playerMood: `serious`,
+            npcReplyMood: `angry`,
+            npcReply: `「切，不借就不借，講話這麼衝幹嘛？當我沒問過！」`,
+            commentary: `你確實守住了不借作業的原則，界線沒有被突破，但帶著責備和貼標籤的拒絕，很容易直接引爆對方的防衛心。本來只是「作業事件」，卻演變成「人際衝突」。`,
+            question: `明明出發點是守住原則，為什麼換個講法結果差這麼多？語氣中的「指責感」對朋友關係有什麼影響？`
+          },
+          {
+            key: `D`,
+            text: `「呃……可是我等一下還要對答案耶……算了你先拿去參考幾題好了，但真的不能全抄喔。」`,
+            df: 0,
+            db: -10,
+            playerMood: `awkward`,
+            npcReplyMood: `smile`,
+            npcReply: `「安啦我只看幾題而已！謝啦，先拿走囉！」`,
+            commentary: `因為不好意思直接說不，你給了一個模糊的折衷方案。對已經很著急的阿哲來說，「拿去參考」幾乎等於允許抄寫，你既沒保住原本的底線，也沒能真正減輕內心的負擔。`,
+            question: `模糊的「參考一下」往往會變成全抄，你覺得自己當時是不敢開口說「不」，還是擔心場面尷尬？`
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: `第一節下課跑腿要求`,
+        scene: `corridor`,
+        sceneName: `下課走廊`,
+        npcId: `xinyi`,
+        npcMood: `理所當然`,
+        npcDialogue: `「欸我等一下要去廁所補妝順便跟學姊聊天，你順路幫我去福利社買一份熱狗跟紅茶啦，先幫我墊，我晚點再給！」`,
+        options: [
+          {
+            key: `A`,
+            text: `「我這節下課也要去教務處交資料時間很趕，沒辦法順路幫你買喔，如果你怕排太久，下一節下課我們一起去！」`,
+            df: 5,
+            db: 10,
+            playerMood: `smile`,
+            npcReplyMood: `smile`,
+            npcReply: `「喔喔對耶，這節只有十分鐘！那沒關係，我等第二節下課再跟你一起去買好了。」`,
+            commentary: `你沒有硬擠出自己的下課時間去滿足對方，而是誠實說明自己的行程限制，同時保留「下節一起去」的友善連結。清楚說出自己的時間界線，讓朋友理解你不是故意不幫忙，而是真的有自己的事。`,
+            question: `下課只有短短十分鐘，你通常會優先照顧自己的需求，還是習慣先完成別人的託付？為什麼？`
+          },
+          {
+            key: `B`,
+            text: `「好吧，那我快跑去買一下，可是我自己的筆記還沒抄完，應該來得及吧……」`,
+            df: 5,
+            db: -12,
+            playerMood: `worried`,
+            npcReplyMood: `happy`,
+            npcReply: `「謝啦你人超好！熱狗記得加番茄醬喔！」`,
+            commentary: `你把自己的事情往後延，替欣儀跑腿還先墊錢。一次兩次看似小事，但若每次都犧牲自己的休息與課業時間，久了你可能會開始默默累積「我都這麼幫忙了，你怎麼都沒看到」的悶氣。`,
+            question: `當我們「嘴巴說好、心裡很趕」時，臉上和心裡的不舒服會怎麼影響接下來對這個朋友的感受？`
+          },
+          {
+            key: `C`,
+            text: `「你自己有腳不會去買喔？每次都叫別人先墊錢又常忘記還，當我是工具人嗎？」`,
+            df: -15,
+            db: 5,
+            playerMood: `serious`,
+            npcReplyMood: `angry`,
+            npcReply: `「喂，只是問一下而已，有必要講得這麼難聽嗎？不去就算了！」`,
+            commentary: `你拒絕了不合理的要求，守護了自己的時間與金錢，但把過去沒明講的不滿一次用「工具人」炸出來，讓欣儀覺得莫名其妙又丟臉。界線是保護自己，但攻擊性的字眼會讓關係瞬間結冰。`,
+            question: `如果之前就曾經因為墊錢沒還而不開心，當時沒講開，跟現在一次爆發之間有什麼關聯？`
+          },
+          {
+            key: `D`,
+            text: `「啊……我不知道福利社還有沒有熱狗耶，不然我幫你買，只是沒買到不要怪我喔。」`,
+            df: 0,
+            db: -10,
+            playerMood: `awkward`,
+            npcReplyMood: `smile`,
+            npcReply: `「沒關係啦，你有去幫我看就好，有的話順便幫我拿一下，拜託！」`,
+            commentary: `你試圖用「可能買不到」當藉口來迴避拒絕，結果反而還是接下了這個任務！很多時候因為怕直接說不，繞了一圈還是得委屈自己跑一趟。`,
+            question: `用「藉口」代替「拒絕」時，為什麼常常反而讓自己更騎虎難下？`
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: `體育課分組與器材搬運`,
+        scene: `gym_storage`,
+        sceneName: `體育器材室`,
+        npcId: `ahao`,
+        npcMood: `嬉皮笑臉`,
+        npcDialogue: `「欸這箱籃球超重的，我手腕昨天打球好像有點扭到，你力氣比較大幫我搬去操場啦！我先過去佔場地跟大家熱身！」`,
+        options: [
+          {
+            key: `A`,
+            text: `「手腕扭到真的要小心耶！不過這箱球連我都搬不太動，我們兩個一人抬一邊過去，或是請老師找人一起搬！」`,
+            df: 10,
+            db: 10,
+            playerMood: `smile`,
+            npcReplyMood: `awkward`,
+            npcReply: `「哈哈……其實也沒到完全不能拿啦，那好吧，我跟你一起抬過去才不會太慢。」`,
+            commentary: `你先關心阿豪的狀況，接著直接點出「我也搬不動」的客觀限制，提出公平分擔的解決方式。你沒有當面拆穿對方是不是在偷懶，卻巧妙地守住了不獨自扛下重物的界線！`,
+            question: `面對朋友「好像在推託責任」時，直接拆穿跟「邀請一起合作」哪一種更能達成雙贏？`
+          },
+          {
+            key: `B`,
+            text: `「喔好啊，那你先過去熱身吧，小心手腕喔，我自己慢慢搬過去操場就好。」`,
+            df: 5,
+            db: -15,
+            playerMood: `worried`,
+            npcReplyMood: `happy`,
+            npcReply: `「謝啦兄弟！那我先去佔好一點的籃框等你喔！」`,
+            commentary: `你獨自搬著沉重的籃球箱慢慢走去操場，結果抵達時大家已經開始分組打球了，你只換來一句「謝啦」。過度體貼卻忽略自己的負荷，很容易變成「永遠被留下來收拾的人」。`,
+            question: `在團體活動中，總是主動承擔辛苦工作的人，最後心情通常會變成「有成就感」還是「覺得被佔便宜」？差別在哪裡？`
+          },
+          {
+            key: `C`,
+            text: `「少裝了啦，剛剛看你還單手轉球轉得超順，根本就是想偷懶不想搬器材對吧！」`,
+            df: -12,
+            db: 5,
+            playerMood: `serious`,
+            npcReplyMood: `angry`,
+            npcReply: `「靠，我真的有點不舒服好不好，你不幫忙還酸我，隨便你啦！」`,
+            commentary: `雖然你沒被佔便宜、守住了體力界線，但直接指責對方「裝病偷懶」會讓阿豪在同學面前下不了台，接下來一整節體育課的氣氛恐怕都會很僵。`,
+            question: `當我們懷疑別人偷懶時，把注意力放在「拆穿對方」與「談好彼此的分工」，哪一種對接下來的相處比較有幫助？`
+          },
+          {
+            key: `D`,
+            text: `「可是我也拿不太動耶……好啦我先搬一半出去放在走廊，剩下的等體育股長來收好了。」`,
+            df: -5,
+            db: -8,
+            playerMood: `awkward`,
+            npcReplyMood: `worried`,
+            npcReply: `「蛤？放走廊等一下會被老師罵吧……算了隨便你。」`,
+            commentary: `你為了不想獨自搬整箱，也不敢要求阿豪一起，結果做出了把器材丟在半路的妥協。這樣不但還是得費力氣，還可能讓兩人都被老師提醒，界線與關係都沒顧好。`,
+            question: `不敢向朋友要求合作時，我們常常會自己硬撐或草率處理，事後反而更麻煩。你有遇過類似的情況嗎？`
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: `午休福利社的免費請客`,
+        scene: `coop_gate`,
+        sceneName: `福利社門口`,
+        npcId: `xinyi`,
+        npcMood: `撒嬌暗示`,
+        npcDialogue: `「天啊好熱喔！我早上出門忘記帶錢包了，你看那個新出的冰沙超好喝，你先幫我付啦，反正你零用錢應該夠吧？」`,
+        options: [
+          {
+            key: `A`,
+            text: `「天氣真的很熱！不過我這週零用錢有預算限制沒辦法請客，但如果你真的很想喝，我身上剛好有零錢可以先借你買！」`,
+            df: 8,
+            db: 10,
+            playerMood: `smile`,
+            npcReplyMood: `thoughtful`,
+            npcReply: `「喔喔好呀，那就先算我借的！我明天早上帶來教室還你，謝謝你啦！」`,
+            commentary: `你非常敏銳地聽出對方把「借錢」講得像「理所當然請客」。你先同理炎熱的天氣，接著明確區分「我不能請客」與「可以清楚算借的」，守住了金錢界線，也給了彼此一個好台階。`,
+            question: `在金錢往來中，「請客」跟「借錢」的差別如果不一開始講清楚，通常會造成什麼誤會？`
+          },
+          {
+            key: `B`,
+            text: `「好啦好啦，看你這麼熱我請你喝這杯沒關係，不用還了啦。」`,
+            df: 5,
+            db: -15,
+            playerMood: `awkward`,
+            npcReplyMood: `happy`,
+            npcReply: `「哇你人最好了！那我就不客氣點大杯的囉！」`,
+            commentary: `你明明自己也有零用錢預算壓力，卻因為被一問「應該夠吧」就不好意思拒絕。當請客變成習慣，朋友可能會把你的大方當成常態，而你自己月底卻得省吃儉用。`,
+            question: `你心裡真的想請這杯飲料嗎？還是只是怕「拒絕別人顯得自己很小氣」？`
+          },
+          {
+            key: `C`,
+            text: `「我又不是提款機！你自己忘記帶錢包就喝學校飲水機的水啊，幹嘛每次都盯著我的錢包？」`,
+            df: -15,
+            db: 5,
+            playerMood: `serious`,
+            npcReplyMood: `angry`,
+            npcReply: `「我也只是問問而已，誰盯著你的錢包了！不借就算了，幹嘛這樣講話！」`,
+            commentary: `你守住了自己的荷包，但「提款機」、「盯著錢包」這類帶著敵意的字眼，讓欣儀瞬間覺得被羞辱。即使你沒打算請客，也能用平靜且尊重的語氣說出自己的界線。`,
+            question: `面對金錢話題特別容易讓人敏感，我們怎麼用「談自己的預算」取代「指責對方貪心」？`
+          },
+          {
+            key: `D`,
+            text: `「呃……可是我等一下要買文具耶……不然你先拿去買小杯的冰沙好了，不用還太多。」`,
+            df: 0,
+            db: -10,
+            playerMood: `worried`,
+            npcReplyMood: `smile`,
+            npcReply: `「真的嗎？那買小杯的就好，以後有機會再請回來！」`,
+            commentary: `因為心裡還是不好意思，你用「改買小杯、不用還太多」退讓了一步。雖然損失變少，但「以後有機會再請」往往沒有明確時間，心裡依然留著一筆說不清的疙瘩。`,
+            question: `「以後再請回來」這種模糊約定，跟明確說「明天還我」，哪一種讓友誼更輕鬆自在？`
+          }
+        ]
+      },
+      {
+        id: 5,
+        title: `分組報告的白嫖怪`,
+        scene: `morning_classroom`,
+        sceneName: `午休教室`,
+        npcId: `azhe`,
+        npcMood: `裝傻推託`,
+        npcDialogue: `「哎唷！你做簡報跟查資料的速度那麼快，我這週末要跟家人去露營沒電腦用，這次報告就全部交給你做啦，拜託嘛！」`,
+        options: [
+          {
+            key: `A`,
+            text: `「跟家人去露營聽起來超讚！但整份報告我一個人做完會負荷不了，你在出發前先把資料整理好給我，排版我來負責，這樣比較公平。」`,
+            df: 8,
+            db: 12,
+            playerMood: `smile`,
+            npcReplyMood: `thoughtful`,
+            npcReply: `「嗯……也是啦，全部丟給你確實不太好意思。那我今天放學前先把內容找好傳給你！」`,
+            commentary: `這是課程中最經典的「白嫖怪」考驗！你先真心祝福對方的露營計畫，接著不模糊地守住「不能一個人全包」的底線，再提出「出發前先查好資料」的具體分工方案，完美展現雙贏溝通！`,
+            question: `如果對方是先搬出「家庭旅遊」當理由，為什麼提出「出發前完成自己那部分」會比全盤接手更好？`
+          },
+          {
+            key: `B`,
+            text: `「好吧，那你去露營玩得開心點，這次報告我來弄就好，你回來再看我做好的內容。」`,
+            df: 5,
+            db: -15,
+            playerMood: `worried`,
+            npcReplyMood: `happy`,
+            npcReply: `「太神啦！我就知道靠你最穩，等我露營回來帶伴手禮給你！」`,
+            commentary: `雖然阿哲開心地去露營了，但整個週末都在電腦前熬夜趕報告的人是你。更危險的是，一旦開了「你全包也沒關係」的先例，下次分組大家可能還會理所當然地把工作推給你。`,
+            question: `當你獨自熬夜做完整組的報告時，心裡會冒出哪些念頭？這對你們下一次見面的互動會不會造成影響？`
+          },
+          {
+            key: `C`,
+            text: `「露營是你家的事吧！憑什麼成績大家一起拿、工作我一個人做？你這樣跟白嫖有什麼兩樣，我要去跟老師說！」`,
+            df: -15,
+            db: 5,
+            playerMood: `serious`,
+            npcReplyMood: `angry`,
+            npcReply: `「吼，你很愛計較欸！一點點忙都不幫，算什麼朋友！」`,
+            commentary: `你的憤怒完全可以理解，因為沒人想被佔便宜，你也成功守住了底線。不過「白嫖」、「告老師」的字眼直接踩到對方的自尊心，讓阿哲見笑轉生氣，整組的合作氣氛也破局了。`,
+            question: `在生氣之前，如果先給彼此一次「把分工談清楚」的機會，結果會不會不一樣？`
+          },
+          {
+            key: `D`,
+            text: `「啊……可是我週末也要補習很忙耶……不然我先做一半，剩下看你露營回來有空再補好嗎？」`,
+            df: 0,
+            db: -10,
+            playerMood: `awkward`,
+            npcReplyMood: `smile`,
+            npcReply: `「OKOK！那我禮拜天晚上有空再看情況補一點囉！」`,
+            commentary: `你沒有具體約定阿哲「什麼時候、要完成哪一塊」，只留下一句「看你有空再補」。結果往往是週日晚上對方說太累了，最後另一半還是得由你硬著頭皮趕完。`,
+            question: `你覺得「有空再補」這種說法，對拖延或想偷懶的人來說，真的有約束力嗎？`
+          }
+        ]
+      },
+      {
+        id: 6,
+        title: `NPC 的情緒反撲回馬槍`,
+        scene: `corridor`,
+        sceneName: `下午教室走廊`,
+        npcId: `azhe`,
+        npcMood: `見笑轉生氣`,
+        npcDialogue: `（剛剛被你提醒要自己負責一份作業後，阿哲突然臉色一沉，在走廊大聲說：）「吼！你真的很愛計較欸，一點點忙都不幫，算什麼朋友！」`,
+        options: [
+          {
+            key: `A`,
+            text: `「我真的很珍惜我們這段友誼，所以才更希望我們分工公平，不會因為這件事讓彼此心裡有疙瘩。如果你真的卡關，我晚上可以線上陪你討論喔！」`,
+            df: 10,
+            db: 12,
+            playerMood: `serious`,
+            npcReplyMood: `thoughtful`,
+            npcReply: `「……好啦，我剛剛口氣也有點太急了。那我回家先試著找資料，不會的部分晚上再問你。」`,
+            commentary: `面對朋友「見笑轉生氣」的反撲，最容易讓人心軟妥協或跟著吵起來！你穩住了情緒，重申你在乎友誼，但界線依然沒有退讓（不代做，但願意陪他討論）。這證明了真正的堅定不需要大吼大叫！`,
+            question: `當對方突然說「你很愛計較，算什麼朋友」時，你心裡會不會瞬間懷疑自己是不是做錯了？怎麼穩住自己？`
+          },
+          {
+            key: `B`,
+            text: `「好好好你別生氣了！是我不好，那你不用做啦，我回去通通幫你弄好總行了吧！」`,
+            df: 5,
+            db: -15,
+            playerMood: `worried`,
+            npcReplyMood: `smile`,
+            npcReply: `「早這樣說不就好了，害我剛剛緊張一下，算你夠意思！」`,
+            commentary: `你一被對方指控「愛計較」，就立刻撤回自己的界線、連忙道歉包辦全部。這無形中教會了對方：「只要我生氣或用絕交威脅，你就會乖乖妥協。」這樣維持下來的和平非常脆弱。`,
+            question: `如果一段關係必須靠你「無限退讓」來換對方「不生氣」，你覺得這段友誼平衡嗎？`
+          },
+          {
+            key: `C`,
+            text: `「誰愛計較啊？自己不想做事還反過來兇我，既然你覺得我不算朋友，那這組自己拆夥算了！」`,
+            df: -15,
+            db: 5,
+            playerMood: `angry`,
+            npcReplyMood: `angry`,
+            npcReply: `「拆就拆啊！誰怕誰，以後各走各的！」`,
+            commentary: `被誤解真的超委屈，你的反擊守住了尊嚴，但情緒對撞讓衝突瞬間升級成「拆夥絕交」。很多原本還能補救的關係，往往就斷在互相賭氣的這一句話上。`,
+            question: `當對方丟出情緒化的指責時，我們要如何「不接他的情緒炸彈」，同時守住自己的立場？`
+          },
+          {
+            key: `D`,
+            text: `「我不是那個意思啦……只是……算了隨便你怎麼想，反正我先去做我自己的部分就是了。」`,
+            df: -8,
+            db: -5,
+            playerMood: `awkward`,
+            npcReplyMood: `angry`,
+            npcReply: `「喔，所以現在擺臉色給我看就對了？」`,
+            commentary: `你選擇冷處理並退縮，既沒有表達你的在乎，也沒有把分工談定。冷戰讓雙方各自猜測對方的惡意，誤會不但沒解開，還會一路延燒到放學。`,
+            question: `生悶氣或避而不談，雖然當下不用吵架，但對解決問題和保護自己的界線有幫助嗎？`
+          }
+        ]
+      },
+      {
+        id: 7,
+        title: `放學後的秘密八卦交換`,
+        scene: `dusk_gate`,
+        sceneName: `黃昏校門口`,
+        npcId: `xinyi`,
+        npcMood: `神秘兮兮`,
+        npcDialogue: `「欸我跟你講一個超大秘密喔，班長其實私底下超討厭小華的！對了，小華之前是不是也有跟妳抱怨過誰？快告訴我啦，我們不是什麼都講嗎？」`,
+        options: [
+          {
+            key: `A`,
+            text: `「哇聽起來氣氛有點複雜……不過小華跟我講的事她有交代不要外傳，我覺得還是要幫她保密啦！我們改天去買雞排聊別的吧！」`,
+            df: 8,
+            db: 12,
+            playerMood: `smile`,
+            npcReplyMood: `thoughtful`,
+            npcReply: `「好吧，你嘴巴真的很緊耶……其實這樣也對啦，那我們不要聊這個了，去買雞排！」`,
+            commentary: `你踩住了最關鍵的「資訊與信任界線」！你沒有批評欣儀愛傳話，而是溫和地表明「答應別人保密的事不能說」，同時用轉移話題邀約吃東西，既守住小華對你的信任，也讓欣儀感受到你依然願意跟她相處。`,
+            question: `如果今天你為了討好欣儀而說出小華的秘密，明天換成你的秘密在欣儀耳裡，你會放心嗎？`
+          },
+          {
+            key: `B`,
+            text: `「真的假的！好啦我只偷偷告訴你一個人喔，你千萬不要說出去，其實小華上次有跟我說……」`,
+            df: 5,
+            db: -15,
+            playerMood: `awkward`,
+            npcReplyMood: `happy`,
+            npcReply: `「天啊太誇張了吧！你放心我絕對不會講出去的，快繼續講！」`,
+            commentary: `你靠著「交換別人的秘密」換來短暫的親近感，但這個秘密很快就會變成全班都知道的炸彈。當你越過對另一個朋友的保密界線，最終受損的是大家對你的人格信任。`,
+            question: `「只告訴你一個人」這句話在國中校園裡通常能撐多久？什麼才是真正能讓人安心的友誼？`
+          },
+          {
+            key: `C`,
+            text: `「你整天在背後講別人八卦不覺得很無聊嗎？我最討厭這種雙面人行為了，別問我！」`,
+            df: -15,
+            db: 5,
+            playerMood: `serious`,
+            npcReplyMood: `angry`,
+            npcReply: `「誰是雙面人啊！我把你當好朋友才跟你聊，你以為自己有多清高？」`,
+            commentary: `拒絕參與八卦非常正確，但直接罵朋友「無聊、雙面人」等於在道德上全面否定她，讓欣儀感到極度羞愧而惱羞成怒，反而把焦點從「不傳話」變成「人身攻擊」。`,
+            question: `想拒絕參與八卦時，怎麼做到「只表態我不談別人隱私」，而不用站到道德制高點指責對方？`
+          },
+          {
+            key: `D`,
+            text: `「嗯……我也記不太清楚她到底說了什麼耶，好像有講一點點又好像沒有，哈哈……」`,
+            df: -5,
+            db: -8,
+            playerMood: `worried`,
+            npcReplyMood: `worried`,
+            npcReply: `「怎麼可能記不清楚？你是不是不想跟我講啊，我們不是最好的嗎……」`,
+            commentary: `裝傻含糊帶過，反而讓欣儀覺得你在敷衍她或故意藏秘密，她可能會繼續追問、甚至懷疑你對這段友誼不夠坦誠，讓你自己陷入更尷尬的攻防戰。`,
+            question: `有時候「溫和而明確地說我不方便轉述」，是不是反而比「裝作忘記」更乾脆、更不會引起猜忌？`
+          }
+        ]
+      },
+      {
+        id: 8,
+        title: `深夜群組的站隊大考驗`,
+        scene: `night_group`,
+        sceneName: `深夜手機群組`,
+        npcId: `xinyi`,
+        npcMood: `情緒勒索`,
+        npcDialogue: `（深夜十一點手機跳出私訊：）「我今天跟阿豪那一群徹底吵翻了！如果你真的當我是好朋友，以後就絕對不准再跟他們講話或一組，不然我們就絕交！」`,
+        options: [
+          {
+            key: `A`,
+            text: `「聽你這樣說我知道你今天一定超級受傷。我很重視你，但我不想在班上選邊站，不過我保證絕對不會跟著別人講你的壞話！」`,
+            df: 10,
+            db: 12,
+            playerMood: `serious`,
+            npcReplyMood: `thoughtful`,
+            npcReply: `「唉……我現在氣頭上才這樣講的。其實聽你說不會跟著別人講我壞話，我心裡好過很多了，謝謝你。」`,
+            commentary: `這就是大魔王等級的「站隊怪」！你同時做到了三件極難的事：看見對方的委屈、堅定拒絕「幫他絕交別人」的控制要求、並給出「我站在保護你的這一方（不說壞話）」的安全感。這是最高段的人際界線！`,
+            question: `當好朋友要求你「一起討厭某個人」時，為什麼「不選邊站，但承諾不背叛」是最健康的立場？`
+          },
+          {
+            key: `B`,
+            text: `「你別難過！既然他們這樣對你，那我以後也完全不跟他們講話了，我無條件挺你到底！」`,
+            df: 5,
+            db: -15,
+            playerMood: `worried`,
+            npcReplyMood: `happy`,
+            npcReply: `「太好了，果然只有你最挺我！我們以後就一起孤立他們！」`,
+            commentary: `你為了保住欣儀這段友誼，把自己的交友自主權拱手讓人。一旦開始配合對方排擠其他同學，不僅傷害了無辜的人，你自己也會失去和其他同學正常互動的自由。`,
+            question: `如果明天欣儀又跟另一個人吵架，她會不會也要求你再跟那個人絕交？這段關係讓你感到自由還是窒息？`
+          },
+          {
+            key: `C`,
+            text: `「你自己的脾氣那麼差才會跟人家吵架，憑什麼連我跟誰講話都要管？要絕交就絕交啊！」`,
+            df: -15,
+            db: 5,
+            playerMood: `angry`,
+            npcReplyMood: `angry`,
+            npcReply: `「好啊！原來你根本站在他們那邊，那我們從現在起就不是朋友了！」`,
+            commentary: `在深夜文字訊息中最容易發生語氣失控。雖然你拒絕了她的控制，但在她最脆弱生氣的時候直接批評她脾氣差又反嗆絕交，幾乎等於親手切斷了溝通的橋樑。`,
+            question: `在文字訊息裡看不到對方的表情，為什麼我們在回傳之前更需要多想三秒鐘？`
+          },
+          {
+            key: `D`,
+            text: `「嗯……現在好晚了我想先睡覺了，這件事等明天去學校再看情況說好不好……」`,
+            df: -6,
+            db: -6,
+            playerMood: `awkward`,
+            npcReplyMood: `angry`,
+            npcReply: `「所以你就是不願意挺我囉？連回個態度都要拖到明天，算了。」`,
+            commentary: `想暫停對話休息是對的，但沒給對方任何情緒安撫就敷衍「看情況」，在對方正焦慮尋求支持時，容易被解讀為冷漠敷衍，讓她在深夜越想越氣。`,
+            question: `如果想先休息明天再聊，除了說「我想睡了」，還能多補上一句什麼話來安撫對方、同時不妥協？`
+          }
+        ]
+      },
+      {
+        id: 9,
+        title: `班級事務與人情壓力`,
+        scene: `morning_classroom`,
+        sceneName: `隔日早自習教室`,
+        npcId: `leader`,
+        npcMood: `焦慮拜託`,
+        npcDialogue: `「唉，原本排好這週要做教室布告欄的同學突然請假了，老師明天就要評分！我看你美編超強又最熱心，這週全部交給你一個人救火好不好？」`,
+        options: [
+          {
+            key: `A`,
+            text: `「時間真的好趕，班長一定也很著急！我放學可以留半小時幫忙剪貼標題，不過整面靠我一個人做不完，我們再找兩位同學一起分擔！」`,
+            df: 10,
+            db: 10,
+            playerMood: `smile`,
+            npcReplyMood: `happy`,
+            npcReply: `「太感謝你了！有你幫忙設計標題就穩一半了，我馬上去問另外兩位同學一起留半小時！」`,
+            commentary: `你看見班長的焦慮並願意伸出援手，但也誠實評估自己的時間與體力極限，拒絕「一個人全部救火」，把任務拆解成自己能負荷的範圍。這展現了「有界線的熱心」，才走得長遠！`,
+            question: `為什麼「熱心幫忙」跟「把別人的緊急狀況全部扛在自己肩上」是不一樣的？`
+          },
+          {
+            key: `B`,
+            text: `「啊……可是我今天晚上還要補習跟寫理化複習卷……好吧，既然是為了班上，我回家再熬夜趕出來好了。」`,
+            df: 8,
+            db: -15,
+            playerMood: `worried`,
+            npcReplyMood: `happy`,
+            npcReply: `「天啊你真的是班上的大救星！那材料包就全部先放在你抽屜囉，辛苦了！」`,
+            commentary: `你為了當「班上的救星」而犧牲自己的補習和睡眠時間。每次都默默吞下超出負荷的任務，別人只會覺得「反正找你一定沒問題」，只有你自己知道有多疲憊。`,
+            question: `當我們習慣當那個「大家一有急事就找的救火隊」時，自己的休息和情緒有被照顧到嗎？`
+          },
+          {
+            key: `C`,
+            text: `「又找我？班上三十幾個人是只剩我有手喔？我又不是美勞股長，自己想辦法啦！」`,
+            df: -15,
+            db: 5,
+            playerMood: `serious`,
+            npcReplyMood: `worried`,
+            npcReply: `「對不起啦，我只是想說你比較熟……那我再問問看別人好了。」`,
+            commentary: `班長其實也是臨危受命才來求助，你的拒絕守住了自己的時間，但帶刺的反問讓原本就焦頭爛額的班長更受傷。其實不用發脾氣，也可以同樣清楚地說出「我今天沒辦法全包」。`,
+            question: `面對並非惡意、只是走投無路的請求時，要怎麼做到「語氣柔和，但態度一樣堅定」？`
+          },
+          {
+            key: `D`,
+            text: `「呃我也不確定晚上來不來得及做完耶……不然我先拿回家看有多少時間再做多少好了。」`,
+            df: -4,
+            db: -10,
+            playerMood: `awkward`,
+            npcReplyMood: `worried`,
+            npcReply: `「蛤，可是明天一早老師就要評分了，如果沒做完怎麼辦？拜託盡量趕完好嗎？」`,
+            commentary: `因為不敢直接拒絕「全部做完」，你帶回家的不只是材料包，還有整晚的焦慮。當班長又補上一句「沒做完怎麼辦」，最後你還是得硬撐著熬夜完成。`,
+            question: `曖昧不明的答應「看有多少時間再做」，為什麼常常比直接談好分工更令人壓力山大？`
+          }
+        ]
+      },
+      {
+        id: 10,
+        title: `靈魂拷問與真正的好朋友`,
+        scene: `dusk_gate`,
+        sceneName: `夕陽下的校園天台階梯`,
+        npcId: `ahao`,
+        npcMood: `真誠反思`,
+        npcDialogue: `「這幾天下來發生好多事喔……老實說，之前有時候我們要你幫忙或問你意見，你都有堅持自己的想法。如果有人只要你說『不要』就立刻生氣威脅絕交，你會怎麼看這段友誼？」`,
+        options: [
+          {
+            key: `A`,
+            text: `「我覺得真正的友誼應該經得起說『不』的考驗！互相尊重彼此的界線，不需要靠委屈自己來換和平，這樣相處才長久呀。」`,
+            df: 12,
+            db: 12,
+            playerMood: `smile`,
+            npcReplyMood: `happy`,
+            npcReply: `「說得超好！之前有些地方我也太依賴大家了，以後我們有話都可以直說，當彼此的真朋友！」`,
+            commentary: `恭喜你走到了第 10 關！你用這一路的行動與這句結語，完美詮釋了《友誼保衛戰》的核心信念：三明治溝通不是用來討好別人的工具，而是幫我們篩選出「能接受你溫和說不」的真朋友！`,
+            question: `回顧這 10 關，哪一個情境最像你在學校真實遇過的狀況？接下來你最想嘗試調整哪一句話的說法？`
+          },
+          {
+            key: `B`,
+            text: `「其實只要大家開開心心、不要吵架就好啦，朋友之間本來就要多配合一點，自己忍一下就過去了。」`,
+            df: 5,
+            db: -12,
+            playerMood: `worried`,
+            npcReplyMood: `thoughtful`,
+            npcReply: `「可是看你一直配合別人，我其實有時候也怕你會不會心裡很累耶……你也要多顧一下自己啦。」`,
+            commentary: `體貼配合確實能帶來表面的和平，但如果總是要靠你「忍一下」才能維持的友誼，久了你的心理能量會被耗盡。記得：你的感受跟朋友的感受一樣重要！`,
+            question: `「委屈換來的不是真友誼，只是表面和平。」讀完這句話，你願意給自己多一點說「不」的勇氣嗎？`
+          },
+          {
+            key: `C`,
+            text: `「人本來就是互相利用嘛，誰踩我線我就直接封鎖絕交，靠自己一個人最省事、也不會被情緒勒索。」`,
+            df: -12,
+            db: 5,
+            playerMood: `serious`,
+            npcReplyMood: `worried`,
+            npcReply: `「欸別這樣想啦，雖然被踩線真的很煩，但我們還是可以找願意尊重你的人好好當朋友啊！」`,
+            commentary: `穿上厚厚的刺蝟盔甲確實不會被佔便宜，但也把真正想關心你、願意和你磨合的真朋友擋在門外。界線是一道有門鎖的柵欄，而不是把所有人都隔絕的高牆。`,
+            question: `保護自己一定要靠「切斷所有連結」嗎？怎麼練習在「保護自己」與「保持開放信任」之間找到平衡？`
+          },
+          {
+            key: `D`,
+            text: `「我也不知道耶……每次遇到這種事還是會很猶豫，怕拒絕會沒朋友，但答應又覺得好委屈。」`,
+            df: 0,
+            db: 5,
+            playerMood: `awkward`,
+            npcReplyMood: `smile`,
+            npcReply: `「其實會猶豫很正常啦！至少你已經開始注意到自己的感受了，我們慢慢練習就好！」`,
+            commentary: `誠實承認自己的猶豫與兩難，是非常寶貴的起點！改變人際習慣本來就需要練習，你不需要一夜之間變得超完美，只要每次多覺察一秒鐘「我現在舒服嗎」，界線就會越來越清晰。`,
+            question: `覺察到自己正在「兩難」的瞬間，就是改變的開始！給自己一個小目標，下次想拒絕時可以先深呼吸並說出哪一句話？`
+          }
+        ]
+      }
+    ];
+
+    /* =========================================================================
+       2. STATE & PERSISTENCE (notebookAppApi)
+       ========================================================================= */
+    const appState = {
+      student: { className: ``, seatNo: ``, name: ``, heroId: `xiaoqing` },
+      currentStageIdx: 0,
+      friendship: 70,
+      boundary: 70,
+      history: [],
+      stageAnswered: false,
+      selectedOptionKey: null,
+      teacherRecords: []
+    };
+
+    let typewriterTimer = null;
+    let typewriterFullText = ``;
+    let typewriterActive = false;
+    let currentView = `login`;
+
+    function clampScore(v) {
+      return Math.max(0, Math.min(100, v));
+    }
+
+    function getHeroById(id) {
+      return HEROES.find(function (h) { return h.id === id; }) || HEROES[0];
+    }
+
+    async function persistState() {
+      if (!window.notebookAppApi || typeof window.notebookAppApi.setAppState !== `function`) return;
+      try {
+        await window.notebookAppApi.setAppState({
+          student: appState.student,
+          currentStageIdx: appState.currentStageIdx,
+          friendship: appState.friendship,
+          boundary: appState.boundary,
+          history: appState.history,
+          stageAnswered: appState.stageAnswered,
+          selectedOptionKey: appState.selectedOptionKey,
+          currentView: currentView,
+          teacherRecords: appState.teacherRecords
+        });
+      } catch (e) {
+        // Ignore persistence errors safely
+      }
+    }
+
+    async function loadPersistedState() {
+      if (!window.notebookAppApi || typeof window.notebookAppApi.getAppState !== `function`) return;
+      try {
+        const saved = await window.notebookAppApi.getAppState();
+        if (!saved) return;
+        if (Array.isArray(saved.teacherRecords)) {
+          appState.teacherRecords = saved.teacherRecords;
+        }
+        if (saved.student && saved.student.name) {
+          appState.student = saved.student;
+          appState.currentStageIdx = Number(saved.currentStageIdx) || 0;
+          appState.friendship = typeof saved.friendship === `number` ? saved.friendship : 70;
+          appState.boundary = typeof saved.boundary === `number` ? saved.boundary : 70;
+          appState.history = Array.isArray(saved.history) ? saved.history : [];
+          appState.stageAnswered = Boolean(saved.stageAnswered);
+          appState.selectedOptionKey = saved.selectedOptionKey || null;
+
+          const clsInput = document.getElementById(`input-class`);
+          const seatInput = document.getElementById(`input-seat`);
+          const nameInput = document.getElementById(`input-name`);
+          if (clsInput) clsInput.value = appState.student.className || ``;
+          if (seatInput) seatInput.value = appState.student.seatNo || ``;
+          if (nameInput) nameInput.value = appState.student.name || ``;
+          renderHeroSelection();
+
+          if (saved.currentView === `report` && appState.history.length === STAGES.length) {
+            showReportView(false);
+          } else if (saved.currentView === `game` && appState.currentStageIdx < STAGES.length) {
+            switchView(`game`);
+            renderStage(false);
+          }
+        }
+      } catch (e) {
+        // Safe fallback
+      }
+    }
+
+    /* =========================================================================
+       3. PROCEDURAL ANIME SVG ART: CAMPUS SCENES & EXPRESSIVE CHARACTERS
+       ========================================================================= */
+    function renderSceneSvg(sceneKey) {
+      const backdrop = document.getElementById(`scene-backdrop`);
+      const scrim = document.getElementById(`scene-scrim`);
+      if (!backdrop) return;
+      if (scrim) {
+        if (sceneKey === `night_group`) scrim.classList.add(`night-mode`);
+        else scrim.classList.remove(`night-mode`);
+      }
+
+      let svg = ``;
+      if (sceneKey === `morning_classroom`) {
+        svg = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g-sky-m" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#bfe6ff"/>
+              <stop offset="100%" stop-color="#fff3d6"/>
+            </linearGradient>
+            <linearGradient id="g-sunbeam" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fff8c9" stop-opacity="0.65"/>
+              <stop offset="100%" stop-color="#fff8c9" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <rect width="1600" height="900" fill="#f9eedc"/>
+          <rect x="0" y="640" width="1600" height="260" fill="#dec4a1"/>
+          <rect x="0" y="625" width="1600" height="18" fill="#b9936c"/>
+          <!-- Windows with morning sky -->
+          <rect x="80" y="90" width="380" height="400" rx="8" fill="url(#g-sky-m)" stroke="#c7b299" stroke-width="10"/>
+          <rect x="500" y="90" width="380" height="400" rx="8" fill="url(#g-sky-m)" stroke="#c7b299" stroke-width="10"/>
+          <circle cx="220" cy="180" r="46" fill="#fff5b8" opacity="0.9"/>
+          <ellipse cx="360" cy="240" rx="90" ry="28" fill="#ffffff" opacity="0.7"/>
+          <ellipse cx="670" cy="190" rx="110" ry="30" fill="#ffffff" opacity="0.65"/>
+          <line x1="270" y1="90" x2="270" y2="490" stroke="#c7b299" stroke-width="8"/>
+          <line x1="80" y1="290" x2="460" y2="290" stroke="#c7b299" stroke-width="8"/>
+          <line x1="690" y1="90" x2="690" y2="490" stroke="#c7b299" stroke-width="8"/>
+          <line x1="500" y1="290" x2="880" y2="290" stroke="#c7b299" stroke-width="8"/>
+          <!-- Blackboard -->
+          <rect x="970" y="130" width="540" height="310" rx="10" fill="#2d5a47" stroke="#b98b5c" stroke-width="14"/>
+          <text x="1020" y="210" fill="#e8f3eb" font-size="30" font-weight="700" opacity="0.85">801 早自習：數學小考</text>
+          <line x1="1020" y1="245" x2="1380" y2="245" stroke="#e8f3eb" stroke-width="3" opacity="0.45"/>
+          <rect x="1150" y="428" width="140" height="12" fill="#f7f7f7"/>
+          <!-- Sunlight beams -->
+          <polygon points="80,90 880,90 1280,900 180,900" fill="url(#g-sunbeam)"/>
+          <!-- Desks silhouettes -->
+          <rect x="190" y="590" width="210" height="22" rx="6" fill="#c79c6d"/>
+          <rect x="215" y="612" width="16" height="140" fill="#7d6b5d"/>
+          <rect x="360" y="612" width="16" height="140" fill="#7d6b5d"/>
+          <rect x="610" y="590" width="210" height="22" rx="6" fill="#c79c6d"/>
+          <rect x="635" y="612" width="16" height="140" fill="#7d6b5d"/>
+          <rect x="780" y="612" width="16" height="140" fill="#7d6b5d"/>
+          <rect x="1040" y="590" width="210" height="22" rx="6" fill="#c79c6d"/>
+        </svg>`;
+      } else if (sceneKey === `corridor`) {
+        svg = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1600" height="900" fill="#e6eef4"/>
+          <!-- Perspective Corridor -->
+          <polygon points="0,0 560,210 560,620 0,900" fill="#d5e2ec"/>
+          <polygon points="1600,0 1040,210 1040,620 1600,900" fill="#eef4f8"/>
+          <polygon points="0,900 560,620 1040,620 1600,900" fill="#d3c1a5"/>
+          <rect x="560" y="210" width="480" height="410" fill="#bfe6ff" opacity="0.65"/>
+          <!-- Corridor Windows on Left -->
+          <polygon points="70,120 460,235 460,470 70,540" fill="#bfe6ff" stroke="#99b0c2" stroke-width="8"/>
+          <polygon points="1040,210 1520,80 1520,760 1040,620" fill="#f7f2e7" stroke="#c8b79e" stroke-width="6"/>
+          <!-- Classroom Door on Right -->
+          <polygon points="1160,260 1350,215 1350,700 1160,645" fill="#9d6b47" stroke="#6c4529" stroke-width="6"/>
+          <polygon points="1200,295 1310,270 1310,430 1200,440" fill="#bfe6ff"/>
+          <!-- Bulletin Board -->
+          <rect x="640" y="260" width="320" height="190" rx="8" fill="#5e8c72" stroke="#c79c6d" stroke-width="10"/>
+          <rect x="670" y="290" width="90" height="110" fill="#fff3b0"/>
+          <rect x="780" y="300" width="140" height="95" fill="#ffd9ec"/>
+        </svg>`;
+      } else if (sceneKey === `gym_storage`) {
+        svg = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1600" height="900" fill="#829ab1"/>
+          <rect x="0" y="580" width="1600" height="320" fill="#d99b52"/>
+          <line x1="0" y1="660" x2="1600" y2="660" stroke="#ffffff" stroke-width="6" opacity="0.55"/>
+          <!-- High Gym Windows -->
+          <rect x="120" y="80" width="360" height="130" rx="6" fill="#d9f0ff"/>
+          <rect x="620" y="80" width="360" height="130" rx="6" fill="#d9f0ff"/>
+          <rect x="1120" y="80" width="360" height="130" rx="6" fill="#d9f0ff"/>
+          <!-- Equipment Rack -->
+          <rect x="130" y="320" width="440" height="280" fill="#4f657a" rx="10"/>
+          <rect x="155" y="345" width="390" height="16" fill="#a8b9c9"/>
+          <rect x="155" y="455" width="390" height="16" fill="#a8b9c9"/>
+          <!-- Basketballs -->
+          <circle cx="220" cy="422" r="34" fill="#e67e22" stroke="#7d3c08" stroke-width="4"/>
+          <circle cx="305" cy="422" r="34" fill="#e67e22" stroke="#7d3c08" stroke-width="4"/>
+          <circle cx="390" cy="422" r="34" fill="#e67e22" stroke="#7d3c08" stroke-width="4"/>
+          <circle cx="475" cy="422" r="34" fill="#e67e22" stroke="#7d3c08" stroke-width="4"/>
+          <!-- Open Door to Sunny Playground -->
+          <rect x="1030" y="250" width="360" height="330" fill="#bfe6ff"/>
+          <rect x="1030" y="490" width="360" height="90" fill="#84b86a"/>
+          <rect x="1020" y="240" width="380" height="340" fill="none" stroke="#486581" stroke-width="14"/>
+        </svg>`;
+      } else if (sceneKey === `coop_gate`) {
+        svg = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1600" height="900" fill="#fff4df"/>
+          <rect x="0" y="640" width="1600" height="260" fill="#e5d4b7"/>
+          <!-- Cooperative Shop Window & Counter -->
+          <rect x="260" y="180" width="1080" height="390" rx="16" fill="#fde3ee" stroke="#c2207f" stroke-width="10"/>
+          <rect x="300" y="250" width="1000" height="230" rx="8" fill="#5e3d4c"/>
+          <!-- Drink Shelves -->
+          <rect x="340" y="290" width="420" height="14" fill="#f8eef8"/>
+          <rect x="820" y="290" width="420" height="14" fill="#f8eef8"/>
+          <rect x="370" y="240" width="36" height="50" rx="5" fill="#0096cc"/>
+          <rect x="420" y="240" width="36" height="50" rx="5" fill="#f080c0"/>
+          <rect x="470" y="240" width="36" height="50" rx="5" fill="#f7b267"/>
+          <rect x="860" y="240" width="36" height="50" rx="5" fill="#7c52aa"/>
+          <rect x="910" y="240" width="36" height="50" rx="5" fill="#52b788"/>
+          <!-- Striped Awning -->
+          <rect x="230" y="110" width="1140" height="90" rx="14" fill="#c2207f"/>
+          <rect x="340" y="110" width="110" height="90" fill="#ffffff" opacity="0.88"/>
+          <rect x="570" y="110" width="110" height="90" fill="#ffffff" opacity="0.88"/>
+          <rect x="800" y="110" width="110" height="90" fill="#ffffff" opacity="0.88"/>
+          <rect x="1030" y="110" width="110" height="90" fill="#ffffff" opacity="0.88"/>
+          <text x="640" y="168" fill="#2e1a28" font-size="38" font-weight="900">金華校園福利社</text>
+          <!-- Counter -->
+          <rect x="240" y="480" width="1120" height="170" rx="10" fill="#f0b6d4"/>
+        </svg>`;
+      } else if (sceneKey === `dusk_gate`) {
+        svg = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g-dusk" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#4b3159"/>
+              <stop offset="48%" stop-color="#d96a4a"/>
+              <stop offset="100%" stop-color="#f7b267"/>
+            </linearGradient>
+          </defs>
+          <rect width="1600" height="900" fill="url(#g-dusk)"/>
+          <circle cx="800" cy="430" r="145" fill="#ffe5a3" opacity="0.88"/>
+          <!-- Distant City & School Silhouettes -->
+          <path d="M0,560 L180,560 L180,460 L340,460 L340,560 L600,560 L600,420 L980,420 L980,560 L1250,560 L1250,480 L1440,480 L1440,560 L1600,560 L1600,900 L0,900 Z" fill="#3a233d" opacity="0.65"/>
+          <rect x="0" y="650" width="1600" height="250" fill="#2e1a28"/>
+          <!-- School Gate Pillars -->
+          <rect x="220" y="340" width="90" height="340" rx="8" fill="#59354f"/>
+          <rect x="1290" y="340" width="90" height="340" rx="8" fill="#59354f"/>
+          <rect x="310" y="540" width="980" height="14" fill="#825673"/>
+          <!-- Trees -->
+          <circle cx="130" cy="440" r="130" fill="#2d1d2f"/>
+          <circle cx="1470" cy="430" r="140" fill="#2d1d2f"/>
+        </svg>`;
+      } else {
+        /* night_group */
+        svg = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g-night" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#181326"/>
+              <stop offset="55%" stop-color="#2b2345"/>
+              <stop offset="100%" stop-color="#403266"/>
+            </linearGradient>
+          </defs>
+          <rect width="1600" height="900" fill="url(#g-night)"/>
+          <circle cx="1290" cy="180" r="68" fill="#fff6cc" opacity="0.9"/>
+          <circle cx="1320" cy="168" r="62" fill="#181326"/>
+          <circle cx="240" cy="140" r="3" fill="#ffffff" opacity="0.8"/>
+          <circle cx="480" cy="95" r="2.5" fill="#ffffff" opacity="0.7"/>
+          <circle cx="780" cy="160" r="3" fill="#ffffff" opacity="0.85"/>
+          <circle cx="1010" cy="110" r="2" fill="#ffffff" opacity="0.6"/>
+          <!-- Bedroom Window & Desk Glow -->
+          <rect x="90" y="110" width="420" height="440" rx="12" fill="#1c1633" stroke="#584b8a" stroke-width="12"/>
+          <line x1="300" y1="110" x2="300" y2="550" stroke="#584b8a" stroke-width="8"/>
+          <line x1="90" y1="330" x2="510" y2="330" stroke="#584b8a" stroke-width="8"/>
+          <!-- Smartphone Chat Notification Glow on Right -->
+          <rect x="1030" y="150" width="380" height="580" rx="34" fill="#231c3d" stroke="#7c52aa" stroke-width="8" opacity="0.75"/>
+          <rect x="1065" y="230" width="240" height="56" rx="22" fill="#c2207f" opacity="0.65"/>
+          <rect x="1125" y="310" width="250" height="68" rx="22" fill="#7c52aa" opacity="0.65"/>
+          <rect x="1065" y="405" width="220" height="56" rx="22" fill="#0096cc" opacity="0.55"/>
+        </svg>`;
+      }
+      backdrop.innerHTML = svg;
+    }
+
+    function renderCharacterSvg(charData, mood, isFacingRight) {
+      const m = mood || `smile`;
+      const flip = isFacingRight ? `transform="scale(-1, 1) translate(-220, 0)"` : ``;
+      const skin = charData.skin || `#ffe0cc`;
+      const hair = charData.hairColor || `#2c2230`;
+      const outfit = charData.outfitColor || `#284166`;
+      const tie = charData.tieColor || `#c2207f`;
+
+      // Hair back & front variations
+      let hairBack = ``;
+      let hairFront = ``;
+      if (charData.hairStyle === `long`) {
+        hairBack = `<path d="M52,70 Q44,175 56,225 L164,225 Q176,175 168,70 Z" fill="${hair}"/>`;
+        hairFront = `<path d="M58,82 Q110,36 162,82 Q150,58 110,55 Q72,58 58,82 Z" fill="${hair}"/><path d="M62,74 Q88,96 112,78 Q138,96 158,74 Q146,42 110,40 Q74,42 62,74 Z" fill="${hair}"/>`;
+      } else if (charData.hairStyle === `ponytail`) {
+        hairBack = `<path d="M148,72 Q196,98 184,185 Q164,178 152,135 Z" fill="${hair}"/><circle cx="155" cy="75" r="8" fill="${tie}"/>`;
+        hairFront = `<path d="M58,86 Q110,36 162,86 Q146,56 110,55 Q74,56 58,86 Z" fill="${hair}"/><path d="M60,82 Q92,102 118,76 Q142,96 160,82 Q144,40 110,40 Q74,40 60,82 Z" fill="${hair}"/>`;
+      } else if (charData.hairStyle === `bob`) {
+        hairBack = `<path d="M52,76 Q46,150 68,166 L152,166 Q174,150 168,76 Z" fill="${hair}"/>`;
+        hairFront = `<path d="M58,82 Q95,98 112,75 Q132,98 162,82 Q146,38 110,38 Q74,38 58,82 Z" fill="${hair}"/>`;
+      } else if (charData.hairStyle === `spiky`) {
+        hairBack = `<path d="M58,88 L50,55 L78,42 L110,25 L144,40 L170,56 L160,92 Z" fill="${hair}"/>`;
+        hairFront = `<path d="M58,82 L75,62 L92,86 L112,56 L132,86 L148,62 L162,84 Q144,40 110,38 Q76,40 58,82 Z" fill="${hair}"/>`;
+      } else {
+        /* short */
+        hairBack = `<path d="M56,88 Q56,42 110,38 Q164,42 164,88 Z" fill="${hair}"/>`;
+        hairFront = `<path d="M58,84 Q88,68 110,80 Q135,68 162,84 Q146,42 110,40 Q74,42 58,84 Z" fill="${hair}"/>`;
+      }
+
+      // Facial Expressions
+      let eyes = ``;
+      let brows = ``;
+      let mouth = ``;
+      let fx = ``;
+
+      if (m === `happy`) {
+        brows = `<path d="M74,88 Q86,82 96,88" stroke="${hair}" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M124,88 Q134,82 146,88" stroke="${hair}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+        eyes = `<path d="M76,104 Q86,93 96,104" stroke="#2e1a28" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M124,104 Q134,93 144,104" stroke="#2e1a28" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+        mouth = `<path d="M97,124 Q110,138 123,124 Z" fill="#c2207f"/>`;
+        fx = `<ellipse cx="75" cy="116" rx="8" ry="4.5" fill="#f48fb1" opacity="0.65"/><ellipse cx="145" cy="116" rx="8" ry="4.5" fill="#f48fb1" opacity="0.65"/>`;
+      } else if (m === `angry`) {
+        brows = `<path d="M74,88 L98,96" stroke="${hair}" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M146,88 L122,96" stroke="${hair}" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+        eyes = `<ellipse cx="86" cy="105" rx="7" ry="8" fill="#2e1a28"/><circle cx="84" cy="102" r="2.2" fill="#ffffff"/><ellipse cx="134" cy="105" rx="7" ry="8" fill="#2e1a28"/><circle cx="132" cy="102" r="2.2" fill="#ffffff"/>`;
+        mouth = `<path d="M98,132 Q110,122 122,132" stroke="#2e1a28" stroke-width="3.5" fill="none" stroke-linecap="round"/>`;
+        fx = `<path d="M154,68 L160,76 M163,66 L154,75" stroke="#c53030" stroke-width="3" stroke-linecap="round"/>`;
+      } else if (m === `worried`) {
+        brows = `<path d="M74,94 Q86,88 96,86" stroke="${hair}" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M146,94 Q134,88 124,86" stroke="${hair}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`;
+        eyes = `<ellipse cx="86" cy="105" rx="7.5" ry="9" fill="#2e1a28"/><circle cx="84" cy="102" r="2.5" fill="#ffffff"/><ellipse cx="134" cy="105" rx="7.5" ry="9" fill="#2e1a28"/><circle cx="132" cy="102" r="2.5" fill="#ffffff"/>`;
+        mouth = `<path d="M98,129 Q104,125 110,129 Q116,133 122,128" stroke="#2e1a28" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+        fx = `<path d="M156,92 Q163,104 156,110 Q149,104 156,92 Z" fill="#0096cc" opacity="0.85"/>`;
+      } else if (m === `awkward`) {
+        brows = `<path d="M75,90 Q86,87 96,91" stroke="${hair}" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M124,91 Q134,87 145,90" stroke="${hair}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+        eyes = `<ellipse cx="86" cy="105" rx="7" ry="7.5" fill="#2e1a28"/><circle cx="88" cy="103" r="2.2" fill="#ffffff"/><ellipse cx="134" cy="105" rx="7" ry="7.5" fill="#2e1a28"/><circle cx="136" cy="103" r="2.2" fill="#ffffff"/>`;
+        mouth = `<path d="M100,127 Q110,130 120,126" stroke="#2e1a28" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+        fx = `<path d="M155,86 Q162,98 155,104 Q148,98 155,86 Z" fill="#0096cc" opacity="0.85"/>`;
+      } else if (m === `serious` || m === `thoughtful`) {
+        brows = `<path d="M75,90 L96,92" stroke="${hair}" stroke-width="3.2" fill="none" stroke-linecap="round"/><path d="M145,90 L124,92" stroke="${hair}" stroke-width="3.2" fill="none" stroke-linecap="round"/>`;
+        eyes = `<ellipse cx="86" cy="104" rx="7.5" ry="8.5" fill="#2e1a28"/><circle cx="84" cy="101" r="2.5" fill="#ffffff"/><ellipse cx="134" cy="104" rx="7.5" ry="8.5" fill="#2e1a28"/><circle cx="132" cy="101" r="2.5" fill="#ffffff"/>`;
+        mouth = `<line x1="101" y1="127" x2="119" y2="127" stroke="#2e1a28" stroke-width="3" stroke-linecap="round"/>`;
+      } else {
+        /* smile */
+        brows = `<path d="M75,90 Q86,85 96,90" stroke="${hair}" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M124,90 Q134,85 145,90" stroke="${hair}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+        eyes = `<ellipse cx="86" cy="104" rx="7.5" ry="9" fill="#2e1a28"/><circle cx="84" cy="101" r="2.8" fill="#ffffff"/><ellipse cx="134" cy="104" rx="7.5" ry="9" fill="#2e1a28"/><circle cx="132" cy="101" r="2.8" fill="#ffffff"/>`;
+        mouth = `<path d="M98,124 Q110,134 122,124" stroke="#2e1a28" stroke-width="3.2" fill="none" stroke-linecap="round"/>`;
+        fx = `<ellipse cx="76" cy="116" rx="7" ry="4" fill="#f48fb1" opacity="0.45"/><ellipse cx="144" cy="116" rx="7" ry="4" fill="#f48fb1" opacity="0.45"/>`;
+      }
+
+      return `<svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g ${flip}>
+          ${hairBack}
+          <!-- School Uniform Body -->
+          <path d="M46,258 L62,175 Q110,162 158,175 L174,258 Z" fill="${outfit}"/>
+          <polygon points="86,170 110,218 134,170" fill="#fdfbfe"/>
+          <polygon points="103,182 117,182 114,228 110,236 106,228" fill="${tie}"/>
+          <!-- Neck & Head -->
+          <rect x="98" y="144" width="24" height="30" rx="10" fill="${skin}"/>
+          <circle cx="62" cy="108" r="9" fill="${skin}"/>
+          <circle cx="158" cy="108" r="9" fill="${skin}"/>
+          <path d="M63,92 Q63,48 110,48 Q157,48 157,92 Q157,145 110,151 Q63,145 63,92 Z" fill="${skin}"/>
+          ${brows}
+          ${eyes}
+          ${fx}
+          ${mouth}
+          ${hairFront}
+        </g>
+      </svg>`;
+    }
+
+    /* =========================================================================
+       4. LOGIN, HERO SELECT & VIEW NAVIGATION
+       ========================================================================= */
+    function switchView(viewName) {
+      currentView = viewName;
+      const views = [`login`, `game`, `report`];
+      views.forEach(function (v) {
+        const el = document.getElementById(`view-` + v);
+        if (el) {
+          if (v === viewName) el.classList.add(`active`);
+          else el.classList.remove(`active`);
+        }
+      });
+      const homeBtn = document.getElementById(`btn-back-home`);
+      if (homeBtn) {
+        homeBtn.style.display = viewName === `login` ? `none` : `inline-flex`;
+      }
+    }
+
+    function renderHeroSelection() {
+      const container = document.getElementById(`hero-select-grid`);
+      if (!container) return;
+      container.innerHTML = HEROES.map(function (h) {
+        const isSel = appState.student.heroId === h.id;
+        return `<button type="button" class="hero-card ${isSel ? `selected` : ``}" onclick="selectHero('${h.id}')">
+          <div class="hero-avatar-box">${renderCharacterSvg(h, isSel ? `happy` : `smile`, false)}</div>
+          <div class="hero-name">${h.name}</div>
+          <span class="hero-trait">${h.trait}</span>
+          <div class="hero-desc">${h.desc}</div>
+        </button>`;
+      }).join(``);
+    }
+
+    function selectHero(heroId) {
+      appState.student.heroId = heroId;
+      renderHeroSelection();
+    }
+
+    function startAdventure() {
+      const clsEl = document.getElementById(`input-class`);
+      const seatEl = document.getElementById(`input-seat`);
+      const nameEl = document.getElementById(`input-name`);
+      const alertEl = document.getElementById(`login-alert`);
+
+      const cls = clsEl ? clsEl.value.trim() : ``;
+      const seat = seatEl ? seatEl.value.trim() : ``;
+      const name = nameEl ? nameEl.value.trim() : ``;
+
+      if (!cls || !seat || !name) {
+        if (alertEl) {
+          alertEl.textContent = `請完整填寫「班級」、「座號」與「姓名」，才能開始記錄你的雙血條冒險喔！`;
+          alertEl.classList.add(`show`);
+        }
+        return;
+      }
+      if (alertEl) alertEl.classList.remove(`show`);
+
+      appState.student.className = cls;
+      appState.student.seatNo = seat;
+      appState.student.name = name;
+      appState.currentStageIdx = 0;
+      appState.friendship = 70;
+      appState.boundary = 70;
+      appState.history = [];
+      appState.stageAnswered = false;
+      appState.selectedOptionKey = null;
+
+      switchView(`game`);
+      renderStage(true);
+      persistState();
+    }
+
+    function requestReturnHome() {
+      const btn = document.getElementById(`btn-back-home`);
+      if (btn && btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.textContent = `⚠️ 再按一次確認重來`;
+        setTimeout(function () {
+          if (btn) {
+            btn.dataset.armed = `false`;
+            btn.textContent = `🔄 重新開始`;
+          }
+        }, 3000);
+        return;
+      }
+      if (btn) {
+        btn.dataset.armed = `false`;
+        btn.textContent = `🔄 重新開始`;
+      }
+      restartFromReport();
+    }
+
+    function restartFromReport() {
+      clearTypewriter();
+      appState.currentStageIdx = 0;
+      appState.friendship = 70;
+      appState.boundary = 70;
+      appState.history = [];
+      appState.stageAnswered = false;
+      appState.selectedOptionKey = null;
+      renderSceneSvg(`morning_classroom`);
+      switchView(`login`);
+      persistState();
+    }
+
+    /* =========================================================================
+       5. RPG GAMEPLAY, TYPEWRITER, OPTIONS & COUNSELOR REMINDER MODAL
+       ========================================================================= */
+    function clearTypewriter() {
+      if (typewriterTimer) {
+        clearInterval(typewriterTimer);
+        typewriterTimer = null;
+      }
+      typewriterActive = false;
+    }
+
+    function startTypewriter(text) {
+      clearTypewriter();
+      typewriterFullText = text;
+      const box = document.getElementById(`dialogue-text`);
+      const hint = document.getElementById(`dialogue-step-hint`);
+      if (!box) return;
+
+      const prefersReduced = window.matchMedia && window.matchMedia(`(prefers-reduced-motion: reduce)`).matches;
+      if (prefersReduced) {
+        box.textContent = text;
+        if (hint) hint.textContent = ``;
+        return;
+      }
+
+      let idx = 0;
+      typewriterActive = true;
+      box.innerHTML = `<span class="typewriter-cursor"></span>`;
+      if (hint) hint.textContent = `點擊對話框可立即顯示完整對白`;
+
+      typewriterTimer = setInterval(function () {
+        idx += 1;
+        if (idx >= typewriterFullText.length) {
+          clearTypewriter();
+          box.textContent = typewriterFullText;
+          if (hint) hint.textContent = ``;
+        } else {
+          box.innerHTML = escapeHtml(typewriterFullText.slice(0, idx)) + `<span class="typewriter-cursor"></span>`;
+        }
+      }, 24);
+    }
+
+    function skipTypewriter() {
+      if (!typewriterActive) return;
+      clearTypewriter();
+      const box = document.getElementById(`dialogue-text`);
+      const hint = document.getElementById(`dialogue-step-hint`);
+      if (box) box.textContent = typewriterFullText;
+      if (hint) hint.textContent = ``;
+    }
+
+    function updateHpHud(df, db, showDelta) {
+      const fVal = document.getElementById(`hud-friend-val`);
+      const bVal = document.getElementById(`hud-boundary-val`);
+      const fBar = document.getElementById(`hud-friend-bar`);
+      const bBar = document.getElementById(`hud-boundary-bar`);
+      const fDelta = document.getElementById(`hud-friend-delta`);
+      const bDelta = document.getElementById(`hud-boundary-delta`);
+
+      if (fVal) fVal.textContent = String(appState.friendship);
+      if (bVal) bVal.textContent = String(appState.boundary);
+      if (fBar) fBar.style.width = appState.friendship + `%`;
+      if (bBar) bBar.style.width = appState.boundary + `%`;
+
+      function setDeltaEl(el, val) {
+        if (!el) return;
+        if (!showDelta) {
+          el.className = `hp-delta`;
+          el.textContent = ``;
+          return;
+        }
+        el.textContent = (val > 0 ? `+` : ``) + val;
+        el.className = `hp-delta show ` + (val > 0 ? `up` : val < 0 ? `down` : `flat`);
+      }
+      setDeltaEl(fDelta, df);
+      setDeltaEl(bDelta, db);
+    }
+
+    function renderStage(animateText) {
+      const stage = STAGES[appState.currentStageIdx];
+      if (!stage) return;
+      const hero = getHeroById(appState.student.heroId);
+      const npc = NPCS[stage.npcId];
+
+      // Backdrop scene
+      renderSceneSvg(stage.scene);
+
+      // HUD labels
+      const badgeEl = document.getElementById(`hud-stage-badge`);
+      const titleEl = document.getElementById(`hud-stage-title`);
+      const locEl = document.getElementById(`hud-stage-loc`);
+      const chipEl = document.getElementById(`hud-player-chip`);
+      if (badgeEl) badgeEl.textContent = `第 ${stage.id} / ${STAGES.length} 關`;
+      if (titleEl) titleEl.textContent = stage.title;
+      if (locEl) locEl.textContent = `📍 ${stage.sceneName}`;
+      if (chipEl) chipEl.textContent = `${appState.student.className} ${appState.student.seatNo}號 ${appState.student.name}（${hero.name}）`;
+
+      // Check if current stage already answered
+      const existingRecord = appState.history[appState.currentStageIdx];
+      if (existingRecord) {
+        appState.stageAnswered = true;
+        appState.selectedOptionKey = existingRecord.chosenKey;
+        const chosenOpt = stage.options.find(function (o) { return o.key === existingRecord.chosenKey; }) || stage.options[0];
+        updateHpHud(chosenOpt.df, chosenOpt.db, true);
+        renderActors(hero, chosenOpt.playerMood, npc, chosenOpt.npcReplyMood, true);
+        setDialogueHeader(npc.name, `回應反應`);
+        if (animateText) startTypewriter(chosenOpt.npcReply);
+        else {
+          clearTypewriter();
+          const box = document.getElementById(`dialogue-text`);
+          if (box) box.textContent = chosenOpt.npcReply;
+        }
+      } else {
+        appState.stageAnswered = false;
+        appState.selectedOptionKey = null;
+        updateHpHud(0, 0, false);
+        renderActors(hero, `smile`, npc, stage.npcMood === `見笑轉生氣` ? `angry` : `worried`, false);
+        setDialogueHeader(npc.name, stage.npcMood);
+        if (animateText) startTypewriter(stage.npcDialogue);
+        else {
+          clearTypewriter();
+          const box = document.getElementById(`dialogue-text`);
+          if (box) box.textContent = stage.npcDialogue;
+        }
+      }
+
+      renderOptions(stage);
+      updatePostAnswerBar();
+    }
+
+    function renderActors(hero, heroMood, npc, npcMood, isPlayerSpeakingFirst) {
+      const pSlot = document.getElementById(`player-slot`);
+      const nSlot = document.getElementById(`npc-slot`);
+      const pWrap = document.getElementById(`player-portrait`);
+      const nWrap = document.getElementById(`npc-portrait`);
+      const pName = document.getElementById(`player-nameplate`);
+      const nName = document.getElementById(`npc-nameplate`);
+
+      if (pWrap) pWrap.innerHTML = renderCharacterSvg(hero, heroMood, true);
+      if (nWrap) nWrap.innerHTML = renderCharacterSvg(npc, npcMood, false);
+      if (pName) pName.textContent = `${hero.name}（你）`;
+      if (nName) nName.textContent = `${npc.name}（${npc.role}）`;
+
+      if (pSlot && nSlot) {
+        if (isPlayerSpeakingFirst) {
+          pSlot.className = `actor-slot player-slot speaking`;
+          nSlot.className = `actor-slot npc-slot speaking`;
+        } else {
+          pSlot.className = `actor-slot player-slot dimmed`;
+          nSlot.className = `actor-slot npc-slot speaking`;
+        }
+      }
+    }
+
+    function setDialogueHeader(speaker, moodLabel) {
+      const sp = document.getElementById(`dialogue-speaker`);
+      const md = document.getElementById(`dialogue-mood`);
+      if (sp) sp.textContent = speaker;
+      if (md) md.textContent = moodLabel;
+    }
+
+    function renderOptions(stage) {
+      const grid = document.getElementById(`options-grid`);
+      if (!grid) return;
+      grid.innerHTML = stage.options.map(function (opt) {
+        const isChosen = appState.stageAnswered && appState.selectedOptionKey === opt.key;
+        const disabledAttr = appState.stageAnswered ? `disabled` : ``;
+        return `<button type="button" class="option-btn ${isChosen ? `chosen` : ``}" ${disabledAttr} onclick="chooseOption('${opt.key}')">
+          <span class="option-key">${opt.key}</span>
+          <span class="option-copy">${escapeHtml(opt.text)}</span>
+        </button>`;
+      }).join(``);
+    }
+
+    function updatePostAnswerBar() {
+      const bar = document.getElementById(`post-answer-bar`);
+      const nextBtn = document.getElementById(`btn-next-stage`);
+      const modalNextBtn = document.getElementById(`modal-next-btn`);
+      const isLast = appState.currentStageIdx >= STAGES.length - 1;
+      const nextLabel = isLast ? `🏁 查看最終結算與歷程回顧` : `前往第 ${appState.currentStageIdx + 2} 關 ➡️`;
+
+      if (nextBtn) nextBtn.textContent = nextLabel;
+      if (modalNextBtn) modalNextBtn.textContent = nextLabel;
+      if (bar) {
+        if (appState.stageAnswered) bar.classList.add(`show`);
+        else bar.classList.remove(`show`);
+      }
+    }
+
+    function chooseOption(optKey) {
+      if (appState.stageAnswered) return;
+      const stage = STAGES[appState.currentStageIdx];
+      if (!stage) return;
+      const opt = stage.options.find(function (o) { return o.key === optKey; });
+      if (!opt) return;
+
+      const hero = getHeroById(appState.student.heroId);
+      const npc = NPCS[stage.npcId];
+
+      appState.stageAnswered = true;
+      appState.selectedOptionKey = optKey;
+      appState.friendship = clampScore(appState.friendship + opt.df);
+      appState.boundary = clampScore(appState.boundary + opt.db);
+
+      appState.history[appState.currentStageIdx] = {
+        stageId: stage.id,
+        stageTitle: stage.title,
+        sceneName: stage.sceneName,
+        npcName: npc.name,
+        npcDialogue: stage.npcDialogue,
+        chosenKey: opt.key,
+        chosenText: opt.text,
+        df: opt.df,
+        db: opt.db,
+        friendshipAfter: appState.friendship,
+        boundaryAfter: appState.boundary,
+        commentary: opt.commentary,
+        question: opt.question
+      };
+
+      updateHpHud(opt.df, opt.db, true);
+      renderActors(hero, opt.playerMood, npc, opt.npcReplyMood, true);
+      setDialogueHeader(npc.name, `回應反應`);
+      startTypewriter(opt.npcReply);
+      renderOptions(stage);
+      updatePostAnswerBar();
+      persistState();
+
+      setTimeout(function () {
+        openReminderModal();
+      }, 360);
+    }
+
+    function openReminderModal() {
+      const stage = STAGES[appState.currentStageIdx];
+      const rec = appState.history[appState.currentStageIdx];
+      if (!stage || !rec) return;
+
+      const deltasEl = document.getElementById(`reminder-deltas`);
+      const commEl = document.getElementById(`reminder-commentary`);
+      const quesEl = document.getElementById(`reminder-question`);
+      const modal = document.getElementById(`modal-reminder`);
+
+      if (deltasEl) {
+        const fCls = rec.df > 0 ? `pos` : rec.df < 0 ? `neg` : `neu`;
+        const bCls = rec.db > 0 ? `pos` : rec.db < 0 ? `neg` : `neu`;
+        deltasEl.innerHTML = `
+          <span class="delta-badge ${fCls}">❤️ 友誼值 ${rec.df > 0 ? `+` : ``}${rec.df}（目前 ${rec.friendshipAfter}）</span>
+          <span class="delta-badge ${bCls}">🛡️ 界線值 ${rec.db > 0 ? `+` : ``}${rec.db}（目前 ${rec.boundaryAfter}）</span>
+        `;
+      }
+      if (commEl) commEl.textContent = rec.commentary;
+      if (quesEl) quesEl.textContent = rec.question;
+      if (modal) modal.classList.add(`open`);
+    }
+
+    function closeReminderModal() {
+      const modal = document.getElementById(`modal-reminder`);
+      if (modal) modal.classList.remove(`open`);
+    }
+
+    function goToNextStage() {
+      closeReminderModal();
+      if (appState.currentStageIdx < STAGES.length - 1) {
+        appState.currentStageIdx += 1;
+        appState.stageAnswered = false;
+        appState.selectedOptionKey = null;
+        renderStage(true);
+        persistState();
+      } else {
+        showReportView(true);
+      }
+    }
+
+    /* =========================================================================
+       6. FINAL REPORT, ARCHETYPE DIAGNOSIS & 10-STAGE JOURNEY REVIEW
+       ========================================================================= */
+    function diagnoseArchetype(f, b) {
+      if (f >= 80 && b >= 85) {
+        return {
+          title: `🌟 溫和堅定型（三明治溝通大師）`,
+          desc: `你擁有非常健康且成熟的人際界線！面對朋友的越線請求或情緒壓力，你既能看見對方的難處，又能清楚守住自己的原則並提出替代方案。你用行動證明：真正穩固的友誼，不需要委屈自己來交換！`
+        };
+      }
+      if (b < 65 && f >= 65) {
+        return {
+          title: `🧸 順從討好型（太怕傷感情的好人）`,
+          desc: `你很重視朋友與和諧的氣氛，常常因為怕場面尷尬或對方生氣，選擇自己吞下委屈或硬著頭皮答應。短期內大家很開心，但長期下來你的心理能量會悄悄透支。試著多練習先照顧自己的感受，溫和地說一聲「不」！`
+        };
+      }
+      if (f < 60 && b >= 65) {
+        return {
+          title: `🦔 刺蝟防衛型（原則滿分但語氣偏硬）`,
+          desc: `你的自我保護意識很強，不太容易被別人佔便宜或情緒勒索！不過在拒絕的當下，有時因為心急或生氣，語氣帶了點指責或諷刺，容易把原本能溝通的朋友推開。試著先同理對方的情緒再說出界線，關係會更自在！`
+        };
+      }
+      if (f >= 70 && b >= 70) {
+        return {
+          title: `⚖️ 穩健平衡型（界線覺察實踐者）`,
+          desc: `你在多數情境中都能兼顧友誼與自我界線，偶爾在遇到高壓或情緒反撲時會有點動搖，但整體方向非常棒！持續留意讓自己感到猶豫的瞬間，你會越來越懂得如何在關係中站穩腳步。`
+        };
+      }
+      return {
+        title: `🧭 探索調適型（正在摸索邊界的勇者）`,
+        desc: `你在面對複雜的人際衝突時，常常在「忍讓妥協」與「直接反彈」之間擺盪，這是青春期非常真實的掙扎！不妨透過下方的 10 關歷程回顧，看看自己在哪些情境最容易動搖，下一次就從那一題開始練習。`
+      };
+    }
+
+    function showReportView(saveToTeacherLog) {
+      clearTypewriter();
+      renderSceneSvg(`dusk_gate`);
+      switchView(`report`);
+
+      const hero = getHeroById(appState.student.heroId);
+      const diag = diagnoseArchetype(appState.friendship, appState.boundary);
+
+      const titleEl = document.getElementById(`report-archetype-title`);
+      const descEl = document.getElementById(`report-archetype-desc`);
+      const metaEl = document.getElementById(`report-student-meta`);
+      const fEl = document.getElementById(`report-final-friend`);
+      const bEl = document.getElementById(`report-final-boundary`);
+      const fNote = document.getElementById(`report-friend-note`);
+      const bNote = document.getElementById(`report-boundary-note`);
+
+      if (titleEl) titleEl.textContent = diag.title;
+      if (descEl) descEl.textContent = diag.desc;
+      if (metaEl) metaEl.textContent = `${appState.student.className} 班 ${appState.student.seatNo} 號 ${appState.student.name} ｜ 扮演主角：${hero.name}（${hero.trait}）`;
+      if (fEl) fEl.textContent = String(appState.friendship);
+      if (bEl) bEl.textContent = String(appState.boundary);
+
+      const fDiff = appState.friendship - 70;
+      const bDiff = appState.boundary - 70;
+      if (fNote) fNote.textContent = `相較初始 70 分（${fDiff >= 0 ? `+` : ``}${fDiff}）`;
+      if (bNote) bNote.textContent = `相較初始 70 分（${bDiff >= 0 ? `+` : ``}${bDiff}）`;
+
+      if (saveToTeacherLog) {
+        const record = {
+          id: Date.now() + `-` + Math.random().toString(36).slice(2, 6),
+          completedAt: new Date().toLocaleString(`zh-TW`, { hour12: false }),
+          className: appState.student.className,
+          seatNo: appState.student.seatNo,
+          name: appState.student.name,
+          heroName: `${hero.name}（${hero.trait}）`,
+          finalFriendship: appState.friendship,
+          finalBoundary: appState.boundary,
+          archetype: diag.title,
+          history: appState.history.slice()
+        };
+        appState.teacherRecords.unshift(record);
+      }
+
+      renderJourneyReviewList();
+      persistState();
+    }
+
+    function renderJourneyReviewList() {
+      const list = document.getElementById(`journey-review-list`);
+      if (!list) return;
+
+      if (!appState.history.length) {
+        list.innerHTML = `<p style="color:var(--on-surface-variant);">尚未有完整的闖關紀錄。</p>`;
+        return;
+      }
+
+      list.innerHTML = appState.history.map(function (rec) {
+        const fCls = rec.df > 0 ? `pos` : rec.df < 0 ? `neg` : `neu`;
+        const bCls = rec.db > 0 ? `pos` : rec.db < 0 ? `neg` : `neu`;
+        return `<article class="journey-item">
+          <div class="journey-item-head">
+            <div class="journey-stage-title">第 ${rec.stageId} 關 ${escapeHtml(rec.stageTitle)}（${escapeHtml(rec.sceneName)}）</div>
+            <div style="display:flex; gap:0.45rem; flex-wrap:wrap;">
+              <span class="delta-badge ${fCls}">❤️ 友誼值 ${rec.df > 0 ? `+` : ``}${rec.df}</span>
+              <span class="delta-badge ${bCls}">🛡️ 界線值 ${rec.db > 0 ? `+` : ``}${rec.db}</span>
+            </div>
+          </div>
+          <div class="journey-flow-grid">
+            <div class="flow-box">
+              <div class="flow-box-label">💬 ${escapeHtml(rec.npcName)}當時這樣說：</div>
+              <div class="flow-box-text">${escapeHtml(rec.npcDialogue)}</div>
+            </div>
+            <div class="flow-box mine">
+              <div class="flow-box-label">🗣️ 我選擇了【選項 ${rec.chosenKey}】回應：</div>
+              <div class="flow-box-text">${escapeHtml(rec.chosenText)}</div>
+            </div>
+          </div>
+          <div class="journey-counselor">
+            <strong>🧑‍🏫 輔導老師情境點評：</strong>${escapeHtml(rec.commentary)}<br>
+            <strong>💭 反思提問：</strong>${escapeHtml(rec.question)}
+          </div>
+        </article>`;
+      }).join(``);
+    }
+
+    /* =========================================================================
+       7. TEACHER DASHBOARD (PASSWORD: 890826) & CSV EXPORT
+       ========================================================================= */
+    let teacherUnlocked = false;
+
+    function openTeacherLoginModal() {
+      const modal = document.getElementById(`modal-teacher`);
+      const alertEl = document.getElementById(`teacher-pwd-alert`);
+      if (alertEl) alertEl.classList.remove(`show`);
+      if (modal) modal.classList.add(`open`);
+      if (teacherUnlocked) {
+        renderTeacherRecords();
+      }
+    }
+
+    function closeTeacherModal() {
+      const modal = document.getElementById(`modal-teacher`);
+      if (modal) modal.classList.remove(`open`);
+    }
+
+    function verifyTeacherPassword() {
+      const input = document.getElementById(`input-teacher-pwd`);
+      const alertEl = document.getElementById(`teacher-pwd-alert`);
+      const gate = document.getElementById(`teacher-gate`);
+      const panel = document.getElementById(`teacher-panel`);
+      const pwd = input ? input.value.trim() : ``;
+
+      if (pwd !== `890826`) {
+        if (alertEl) {
+          alertEl.textContent = `密碼不正確，請確認後再試一次。`;
+          alertEl.classList.add(`show`);
+        }
+        return;
+      }
+      teacherUnlocked = true;
+      if (alertEl) alertEl.classList.remove(`show`);
+      if (gate) gate.style.display = `none`;
+      if (panel) panel.style.display = `block`;
+      renderTeacherRecords();
+    }
+
+    function renderTeacherRecords() {
+      const statsEl = document.getElementById(`teacher-summary-stats`);
+      const container = document.getElementById(`teacher-records-container`);
+      const detailEl = document.getElementById(`teacher-student-detail`);
+      if (!container) return;
+
+      const records = appState.teacherRecords || [];
+      if (statsEl) {
+        statsEl.textContent = `目前共記錄 ${records.length} 位同學的完整冒險歷程`;
+      }
+
+      if (!records.length) {
+        container.innerHTML = `<div class="counselor-box"><p>目前尚無學生完成 10 關闖關紀錄。同學在完成第 10 關結算後，作答歷程會自動匯入此後台清單。</p></div>`;
+        if (detailEl) detailEl.style.display = `none`;
+        return;
+      }
+
+      container.innerHTML = `<div class="teacher-table-wrap">
+        <table class="teacher-table">
+          <thead>
+            <tr>
+              <th>班級</th>
+              <th>座號</th>
+              <th>姓名</th>
+              <th>選擇主角</th>
+              <th>❤️ 友誼值</th>
+              <th>🛡️ 界線值</th>
+              <th>診斷型態</th>
+              <th>完成時間</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${records.map(function (r, idx) {
+              return `<tr>
+                <td>${escapeHtml(r.className)}</td>
+                <td>${escapeHtml(r.seatNo)}</td>
+                <td><strong>${escapeHtml(r.name)}</strong></td>
+                <td>${escapeHtml(r.heroName)}</td>
+                <td><strong>${r.finalFriendship}</strong></td>
+                <td><strong>${r.finalBoundary}</strong></td>
+                <td>${escapeHtml(r.archetype)}</td>
+                <td>${escapeHtml(r.completedAt)}</td>
+                <td><button type="button" class="btn btn-surface" style="min-height:36px; padding:0.3rem 0.8rem; font-size:0.82rem;" onclick="inspectStudentRecord(${idx})">檢視 10 關明細</button></td>
+              </tr>`;
+            }).join(``)}
+          </tbody>
+        </table>
+      </div>`;
+    }
+
+    function inspectStudentRecord(index) {
+      const rec = appState.teacherRecords[index];
+      const detailEl = document.getElementById(`teacher-student-detail`);
+      if (!rec || !detailEl) return;
+
+      detailEl.style.display = `block`;
+      detailEl.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:var(--space-md);">
+          <h4 style="margin:0; font-size:1.05rem;">📋 ${escapeHtml(rec.className)}班 ${escapeHtml(rec.seatNo)}號 ${escapeHtml(rec.name)} — 10 關作答與雙血條明細</h4>
+          <span style="font-weight:800; color:var(--primary);">❤️ ${rec.finalFriendship} / 🛡️ ${rec.finalBoundary}</span>
+        </div>
+        <div class="teacher-table-wrap">
+          <table class="teacher-table">
+            <thead>
+              <tr>
+                <th>關卡</th>
+                <th>NPC 原對白</th>
+                <th>學生選項與回應</th>
+                <th>血條變動</th>
+                <th>結算後數值</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rec.history.map(function (h) {
+                return `<tr>
+                  <td style="white-space:nowrap;"><strong>第${h.stageId}關</strong><br>${escapeHtml(h.stageTitle)}</td>
+                  <td><strong>${escapeHtml(h.npcName)}：</strong>${escapeHtml(h.npcDialogue)}</td>
+                  <td><strong>【${h.chosenKey}】</strong>${escapeHtml(h.chosenText)}</td>
+                  <td style="white-space:nowrap;">❤️ ${h.df > 0 ? `+` : ``}${h.df}<br>🛡️ ${h.db > 0 ? `+` : ``}${h.db}</td>
+                  <td style="white-space:nowrap;">❤️ ${h.friendshipAfter}<br>🛡️ ${h.boundaryAfter}</td>
+                </tr>`;
+              }).join(``)}
+            </tbody>
+          </table>
+        </div>
+      `;
+      detailEl.scrollIntoView({ behavior: `smooth`, block: `nearest` });
+    }
+
+    function clearAllTeacherRecords(btn) {
+      if (btn && btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.textContent = `⚠️ 再按一次確認清空`;
+        setTimeout(function () {
+          if (btn) {
+            btn.dataset.armed = `false`;
+            btn.textContent = `🗑️ 清除所有紀錄`;
+          }
+        }, 3000);
+        return;
+      }
+      if (btn) {
+        btn.dataset.armed = `false`;
+        btn.textContent = `🗑️ 清除所有紀錄`;
+      }
+      appState.teacherRecords = [];
+      const detailEl = document.getElementById(`teacher-student-detail`);
+      if (detailEl) detailEl.style.display = `none`;
+      renderTeacherRecords();
+      persistState();
+    }
+
+    function csvCell(val) {
+      const str = String(val == null ? `` : val).replace(/"/g, `""`);
+      return `"` + str + `"`;
+    }
+
+    function downloadCsvContent(csvBody, filename) {
+      const contentWithBom = `\uFEFF` + csvBody;
+      if (window.notebookAppApi && typeof window.notebookAppApi.triggerFileDownload === `function`) {
+        window.notebookAppApi.triggerFileDownload({
+          content: contentWithBom,
+          contentType: `text/csv`,
+          encoding: `UTF-8`,
+          filename: filename
+        });
+      }
+    }
+
+    function exportStudentCsv() {
+      const hero = getHeroById(appState.student.heroId);
+      const headers = [`班級`, `座號`, `姓名`, `主角`, `關卡`, `關卡名稱`, `NPC`, `NPC原對白`, `選擇選項`, `學生回應內容`, `友誼值變動`, `界線值變動`, `當下友誼值`, `當下界線值`, `輔導老師點評`];
+      const rows = appState.history.map(function (h) {
+        return [
+          appState.student.className,
+          appState.student.seatNo,
+          appState.student.name,
+          hero.name,
+          h.stageId,
+          h.stageTitle,
+          h.npcName,
+          h.npcDialogue,
+          h.chosenKey,
+          h.chosenText,
+          h.df,
+          h.db,
+          h.friendshipAfter,
+          h.boundaryAfter,
+          h.commentary
+        ].map(csvCell).join(`,`);
+      });
+      const csv = [headers.map(csvCell).join(`,`)].concat(rows).join(`\n`);
+      const fname = `友誼保衛戰_${appState.student.className}_${appState.student.seatNo}_${appState.student.name}.csv`;
+      downloadCsvContent(csv, fname);
+    }
+
+    function exportAllRecordsCsv() {
+      const records = appState.teacherRecords || [];
+      const headers = [`完成時間`, `班級`, `座號`, `姓名`, `主角`, `最終友誼值`, `最終界線值`, `人際型態`, `關卡編號`, `關卡名稱`, `NPC`, `NPC原對白`, `選擇選項`, `學生回應內容`, `友誼值變動`, `界線值變動`, `當下友誼值`, `當下界線值`];
+      const rows = [];
+      records.forEach(function (r) {
+        (r.history || []).forEach(function (h) {
+          rows.push([
+            r.completedAt,
+            r.className,
+            r.seatNo,
+            r.name,
+            r.heroName,
+            r.finalFriendship,
+            r.finalBoundary,
+            r.archetype,
+            h.stageId,
+            h.stageTitle,
+            h.npcName,
+            h.npcDialogue,
+            h.chosenKey,
+            h.chosenText,
+            h.df,
+            h.db,
+            h.friendshipAfter,
+            h.boundaryAfter
+          ].map(csvCell).join(`,`));
+        });
+      });
+      const csv = [headers.map(csvCell).join(`,`)].concat(rows).join(`\n`);
+      downloadCsvContent(csv, `友誼保衛戰_全班作答紀錄.csv`);
+    }
+
+    function escapeHtml(str) {
+      return String(str == null ? `` : str)
+        .replace(/&/g, `&amp;`)
+        .replace(/</g, `&lt;`)
+        .replace(/>/g, `&gt;`)
+        .replace(/"/g, `&quot;`);
+    }
+
+    /* =========================================================================
+       8. APP INITIALIZATION
+       ========================================================================= */
+    async function initApp() {
+      renderSceneSvg(`morning_classroom`);
+      renderHeroSelection();
+      await loadPersistedState();
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, function () {
+      initApp();
+    });
+  </script>
+</body>
+</html>
